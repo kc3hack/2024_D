@@ -38,7 +38,11 @@
 
 <!-- 使用技術を入力してください -->
 - Frontend
-  - 
+  - フレームワーク未使用
+  - HTML
+  - CSS
+  - JavaScript
+  
 - Backend
   - Java OpenJDK Corretto-○○○○
   - SpringBoot ○○○
