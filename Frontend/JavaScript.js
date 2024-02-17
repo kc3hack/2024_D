@@ -4,7 +4,7 @@
 　*設定の取得
 
 メイン動作
-　位置情報の取得
+　**位置情報の取得
 　情報の送信
 　情報の受信
 　画面の反映
@@ -36,14 +36,15 @@ let Type = {
     STO:{Name:"store", Value:true},
 }
 
-async function GetInfo(){
+async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
     const posi = await GetPosi();
     /*緯度：posi.coords.latitude
       経度：posi.coords.longitude
     */
+    GetSetting();//設定の更新
     
 }
-const GetPosi = ()=>{
+const GetPosi = ()=>{//GetInfoの同期処理
     return new Promise((resolve)=>{
         navigator.geolocation.getCurrentPosition((posi)=> {
             resolve(posi);
@@ -58,4 +59,3 @@ function Display(name){
 function GetSetting(){
     //設定の取得
 }
-GetInfo();
