@@ -37,7 +37,18 @@ let Type = {
 }
 
 async function GetInfo(){
-
+    const posi = await GetPosi();
+    /*緯度：posi.coords.latitude
+      経度：posi.coords.longitude
+    */
+    
+}
+const GetPosi = ()=>{
+    return new Promise((resolve)=>{
+        navigator.geolocation.getCurrentPosition((posi)=> {
+            resolve(posi);
+        });
+    })
 }
 
 function Display(name){
@@ -47,3 +58,4 @@ function Display(name){
 function GetSetting(){
     //設定の取得
 }
+GetInfo();
