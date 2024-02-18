@@ -59,7 +59,6 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
     for(let i of Object.values(Type)){
         if(i.Value == true){json.type.push(i.Name)}
     }
-
     try{
         const res = await fetch(URL, {
             method: "POST",
@@ -93,5 +92,5 @@ function Display(name){
 function GetSetting(){
     //設定の取得
 }
-//console.log(error);
+console.log(やる気);
 GetInfo();
