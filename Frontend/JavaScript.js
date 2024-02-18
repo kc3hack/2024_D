@@ -14,6 +14,9 @@
 　前回の設定の保存と取得
 */
 
+//フェッチURL
+const URL = "https://httpbin.org/post";
+
 //HTML要素
 const Main_Frame = {
     Info:document.getElementById(""),
@@ -41,18 +44,41 @@ let Type = {
 }
 
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
-    const posi = await GetPosi();
-    /*緯度：posi.coords.latitude
+    /*const posi = await GetPosi();
+    緯度：posi.coords.latitude
       経度：posi.coords.longitude
-    */
-    GetSetting();//設定の更新
     
+    GetSetting();//設定の更新*/
+
+    const json = {
+        "test":"OK?",
+        "text":"OK!!"
+    }
+
+    try{
+        console.log("send");
+        const res = await fetch(URL, {
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify(json)
+        });
+        const res_json = await res.json();
+        console.log(res_json);
+    }catch(e){
+        console.error("Error:", e);
+    }
 }
 const GetPosi = ()=>{//GetInfoの同期処理
     return new Promise((resolve)=>{
-        navigator.geolocation.getCurrentPosition((posi)=> {
-            resolve(posi);
-        });
+        try{
+            navigator.geolocation.getCurrentPosition((posi)=> {
+                resolve(posi);
+            });
+        }catch(e){
+            console.error("Error:", e);
+        }
     })
 }
 
@@ -63,3 +89,5 @@ function Display(name){
 function GetSetting(){
     //設定の取得
 }
+
+GetInfo();
