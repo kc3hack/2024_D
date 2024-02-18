@@ -5,7 +5,7 @@
 
 メイン動作
 　**位置情報の取得
-　情報の送信
+　**情報の送信
 　情報の受信
 　画面の反映
 
@@ -44,19 +44,23 @@ let Type = {
 }
 
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
-    /*const posi = await GetPosi();
-    緯度：posi.coords.latitude
-      経度：posi.coords.longitude
+    const posi = await GetPosi();
+    //緯度：posi.coords.latitude
+    //経度：posi.coords.longitude
     
-    GetSetting();//設定の更新*/
+    GetSetting();//設定の更新
 
     const json = {
-        "test":"OK?",
-        "text":"OK!!"
+        latitude:posi.coords.latitude,
+        longitude:posi.coords.longitude,
+        range:Range,
+        type:[],
+    }
+    for(let i of Object.values(Type)){
+        if(i.Value == true){json.type.push(i.Name)}
     }
 
     try{
-        console.log("send");
         const res = await fetch(URL, {
             method: "POST",
             headers:{
@@ -65,7 +69,7 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
             body:JSON.stringify(json)
         });
         const res_json = await res.json();
-        console.log(res_json);
+        console.log(res_json.json);
     }catch(e){
         console.error("Error:", e);
     }
@@ -89,5 +93,5 @@ function Display(name){
 function GetSetting(){
     //設定の取得
 }
-
+//console.log(error);
 GetInfo();
