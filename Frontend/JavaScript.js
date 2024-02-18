@@ -25,12 +25,13 @@ const Main_Frame = {
 }
 const List_Frame = document.getElementById("list");
 const Setting_Input = {
-    RAN_S:document.getElementById(""),
+    RAN_S:document.getElementById("slider_ran"),
+    RAN_T:document.getElementById("ran_text"),
     ICL_C:document.getElementById(""),
-    RES_C:document.getElementById(""),
-    PAR_C:document.getElementById(""),
-    ENT_C:document.getElementById(""),
-    STO_C:document.getElementById(""),
+    RES_C:document.getElementById("check_res"),
+    PAR_C:document.getElementById("check_par"),
+    ENT_C:document.getElementById("check_ent"),
+    STO_C:document.getElementById("check_sto"),
 }
 
 //設定項目の変数
@@ -90,7 +91,14 @@ function Display(name){
 }
 
 function GetSetting(){
-    //設定の取得
+    Range = Setting_Input.RAN_S.value;
+    Type.RES.Value = Setting_Input.RES_C.checked;
+    Type.PAR.Value = Setting_Input.PAR_C.checked;
+    Type.ENT.Value = Setting_Input.ENT_C.checked;
+    Type.STO.Value = Setting_Input.STO_C.checked;
 }
+
+Setting_Input.RAN_S.addEventListener('input', (e)=>{
+    Setting_Input.RAN_T.innerText = `:${Setting_Input.RAN_S.value}m`;
+});
 console.log(やる気);
-GetInfo();
