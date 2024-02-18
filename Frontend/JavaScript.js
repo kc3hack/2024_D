@@ -15,7 +15,11 @@
 */
 
 //HTML要素
-const Main_Frame = document.getElementById("main");
+const Main_Frame = {
+    Info:document.getElementById(""),
+    Set:document.getElementById(""),
+    Load:document.getElementById(""),
+}
 const List_Frame = document.getElementById("list");
 const Setting_Input = {
     RAN_S:document.getElementById(""),

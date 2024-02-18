@@ -1,1 +1,39 @@
 @charset "utf-8";
+.frame{
+    position: fixed;
+}
+
+/**/
+
+#main_frame{
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 45%;
+    background-color: aqua;
+}
+#list_frame{
+    bottom: 5%;
+    left: 5%;
+    width: 40%;
+    height: 35%;
+    background-color: rgb(245, 101, 101);
+
+}
+#image_frame{
+    bottom: 15%;
+    right: 5%;
+    width: 50%;
+    height: 30%;
+    background-color: rgb(87, 243, 152);
+}
+#image_frame img{
+    width: 100%;
+    height: auto;
+}
+#button_frame{
+    bottom: 5%;
+    right: 5%;
+    width: 50%;
+    height: 10%;
+}
