@@ -16,12 +16,9 @@ public class RandomStoreController {
 
         return "Hello, world!"; 
     } 
-    @GetMapping("/test")
-    public String getStores(
-        @RequestParam(name = "latitude") float latitude,
-        @RequestParam(name = "longitude") float longitude,
-        @RequestParam(name = "searchRadius") int searchRadius,
-        @RequestParam(name = "type") String type) {
+    @PostMapping("/test")
+    public ResponseEntity<MyModel> postMyModel(@RequestBody MyModel model) {
+        
 
         // ここに処理を書く
 
