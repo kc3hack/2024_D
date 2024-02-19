@@ -35,7 +35,12 @@
     bottom: 5%;
     right: 5%;
     width: 50%;
-    height: 10%;
+    height: 7.5%;
+
+    font-weight: bold;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #ffd803;
 }
 #ran_text{
     display: inline;
