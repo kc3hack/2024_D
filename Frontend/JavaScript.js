@@ -19,9 +19,9 @@ const URL = "https://httpbin.org/post";
 
 //HTML要素
 const Main_Frame = {
-    Info:document.getElementById(""),
-    Set:document.getElementById(""),
-    Load:document.getElementById(""),
+    Info:document.getElementById("info"),
+    Set:document.getElementById("setting"),
+    /*Load:document.getElementById(""),*/
 }
 const List_Frame = document.getElementById("list");
 const Setting_Input = {
@@ -73,6 +73,7 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
     }catch(e){
         console.error("Error:", e);
     }
+    Display("Info");
 }
 const GetPosi = ()=>{//GetInfoの同期処理
     return new Promise((resolve)=>{
@@ -86,12 +87,20 @@ const GetPosi = ()=>{//GetInfoの同期処理
     })
 }
 
-function Display(name){
+function Display(Name){
     //画面の切り替え
+    //console.log(Main_Frame["Info"]);
+    for(let i of Object.keys(Main_Frame)){
+        if(i == Name){
+            Main_Frame[i].style.display = "";
+        }else{
+            Main_Frame[i].style.display = "none";
+        }
+    }
 }
 
 function GetSetting(){
-    Range = Setting_Input.RAN_S.value;
+    Range = Setting_Input.RAN_S.value - 0;
     Type.RES.Value = Setting_Input.RES_C.checked;
     Type.PAR.Value = Setting_Input.PAR_C.checked;
     Type.ENT.Value = Setting_Input.ENT_C.checked;
@@ -101,4 +110,4 @@ function GetSetting(){
 Setting_Input.RAN_S.addEventListener('input', (e)=>{
     Setting_Input.RAN_T.innerText = `:${Setting_Input.RAN_S.value}m`;
 });
-console.log(やる気);
+//console.log(やる気);
