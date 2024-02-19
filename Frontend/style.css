@@ -69,3 +69,32 @@ h1{
     top:35%;
     left:55%;
 }
+
+/* 変数設定 */
+:root {
+    position:absolute;
+    --star-size: 30px;
+    --star-color: #fff;
+    --star-background: #fc0;
+  }
+  
+  /* 星評価のスタイル */
+  .stars {
+    position:absolute;
+    top:47%;
+    right:5%;
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    line-height: 1;
+  }
+  
+  .stars::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
