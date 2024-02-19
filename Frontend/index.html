@@ -18,14 +18,34 @@
             </div>
             <div id="setting">
                 <!--ここに設定画面-->
-                設定<br>
-                <label>検索範囲<input type="range" min="100" max="5000" step="100" value="500" id="slider_ran"><div id="ran_text">:500m</div></label><br>
-                　<label><input type="checkbox">営業時間外も含む</label><br>
-                検索結果に含む<br>
-                <label><input type="checkbox" checked id="check_res">飲食店...(そば屋, ラーメン屋)</label><br>
-                <label><input type="checkbox" checked id="check_par">施設　...(水族館, 遊園地)</label><br>
-                <label><input type="checkbox" checked id="check_ent">娯楽　...(カラオケ, ボーリング場)</label><br>
-                <label></label><input type="checkbox" checked id="check_sto">売店　...(書店, 百均)</label><br>
+
+                <div>
+                    <label for="area">検索範囲：</label><br />
+                    <input type="range"> <br><br>
+                    <input type="checkbox" />
+                    <label for="officehour">営業時間外も含む</label>
+                </div>
+                <br>
+                <fieldset>
+                    <legend>検索ジャンル</legend>
+                    <div>
+                      <input type="checkbox" id="restaurant" name="interest" value="restaurant" />
+                      <label for="restaurant">飲食店</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="park" name="interest" value="park" />
+                      <label for="park">施設</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="entertainment" name="interest" value="entertainment" />
+                      <label for="entertainment">娯楽</label>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="store" name="interest" value="store" />
+                      <label for="store">売店</label>
+                    </div>
+                  </fieldset>
+
                 <!--↑この二つの入力をいい感じに-->
             </div>
             <!--メインフレームの中に将来的にロードとかタイトルとか-->
