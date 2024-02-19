@@ -21,7 +21,7 @@ const URL = "https://httpbin.org/post";
 const Main_Frame = {
     Info:document.getElementById("info"),
     Set:document.getElementById("setting"),
-    /*Load:document.getElementById(""),*/
+    Load:document.getElementById("load"),
 }
 const List_Frame = document.getElementById("list");
 const Setting = {
@@ -44,7 +44,13 @@ let Type = {
     STO:{Name:"store", Value:true},
 }
 
+const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、"
+let NowLoad = false;
+
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
+    Display("Load");
+    NowLoad = true;
+    Load();
     const posi = await GetPosi();
     //緯度：posi.coords.latitude
     //経度：posi.coords.longitude
@@ -74,6 +80,7 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
     }catch(e){
         console.error("Error:", e);
     }
+    NowLoad = false;
     Display("Info");
 }
 const GetPosi = ()=>{//GetInfoの同期処理
@@ -98,6 +105,20 @@ function Display(Name){
             Main_Frame[i].style.display = "none";
         }
     }
+}
+
+function Load(){
+    const str = "";
+    let i=0;
+    const loop = setInterval(()=>{
+        Main_Frame.Load.innerText = load_text.substring(0, i);
+        i++
+        if(!NowLoad){
+            clearInterval(loop);
+            console.log("OK");
+        }
+    }, 75);
+    
 }
 
 function GetSetting(){
