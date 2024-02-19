@@ -24,10 +24,10 @@ const Main_Frame = {
     /*Load:document.getElementById(""),*/
 }
 const List_Frame = document.getElementById("list");
-const Setting_Input = {
+const Setting = {
     RAN_S:document.getElementById("slider_ran"),
     RAN_T:document.getElementById("ran_text"),
-    ICL_C:document.getElementById(""),
+    ICL_C:document.getElementById("check_icl"),
     RES_C:document.getElementById("check_res"),
     PAR_C:document.getElementById("check_par"),
     ENT_C:document.getElementById("check_ent"),
@@ -55,6 +55,7 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
         latitude:posi.coords.latitude,
         longitude:posi.coords.longitude,
         range:Range,
+        inclose:InClouse,
         type:[],
     }
     for(let i of Object.values(Type)){
@@ -100,14 +101,15 @@ function Display(Name){
 }
 
 function GetSetting(){
-    Range = Setting_Input.RAN_S.value - 0;
-    Type.RES.Value = Setting_Input.RES_C.checked;
-    Type.PAR.Value = Setting_Input.PAR_C.checked;
-    Type.ENT.Value = Setting_Input.ENT_C.checked;
-    Type.STO.Value = Setting_Input.STO_C.checked;
+    Range = Setting.RAN_S.value - 0;
+    InClouse = Setting.ICL_C.checked;
+    Type.RES.Value = Setting.RES_C.checked;
+    Type.PAR.Value = Setting.PAR_C.checked;
+    Type.ENT.Value = Setting.ENT_C.checked;
+    Type.STO.Value = Setting.STO_C.checked;
 }
 
-Setting_Input.RAN_S.addEventListener('input', (e)=>{
-    Setting_Input.RAN_T.innerText = `:${Setting_Input.RAN_S.value}m`;
+Setting.RAN_S.addEventListener('input', (e)=>{
+    Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
 //console.log(やる気);
