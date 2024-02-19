@@ -4,7 +4,10 @@
 }
 
 /**/
-
+body{
+    background-image: url(img/back.png);
+    background-size: cover;
+}
 #main_frame{
     top: 10%;
     left: 5%;
