@@ -30,11 +30,9 @@
     right: 5%;
     width: 50%;
     height: 30%;
-    background-color: rgb(87, 243, 152);
-}
-#image_frame img{
-    width: 100%;
-    height: auto;
+    /* background-color: rgb(87, 243, 152); */
+    background-image: url(img/obatyan.png);
+    background-size: cover;
 }
 #button_frame{
     bottom: 5%;
