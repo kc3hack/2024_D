@@ -45,6 +45,10 @@
     border-radius: 10px;
     background-color: #ffd803;
 }
+#load{
+    font-size: 150%;
+    font-weight: bold;
+}
 
 .infoimage{
     width: 45%;
