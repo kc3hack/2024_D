@@ -17,7 +17,12 @@
     left: 5%;
     width: 40%;
     height: 35%;
-    background-color: rgb(245, 101, 101);
+
+    background-color: #f7f6dc;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 10px;
+    /* margin: 10px; */
 
 }
 #image_frame{
@@ -41,7 +46,4 @@
     border: 0px;
     border-radius: 10px;
     background-color: #ffd803;
-}
-#ran_text{
-    display: inline;
 }
