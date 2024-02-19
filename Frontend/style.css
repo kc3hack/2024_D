@@ -60,6 +60,11 @@ body{
     height: 50%;
 }
 
+a{
+    position:absolute;
+    top:92%;
+}
+
 h1{
     margin:auto;
     text-align: center;
@@ -80,7 +85,6 @@ h1{
     --star-color: #fff;
     --star-background: #fc0;
   }
-  
   /* 星評価のスタイル */
   .stars {
     position:absolute;
@@ -91,7 +95,6 @@ h1{
     font-family: Times;
     line-height: 1;
   }
-  
   .stars::before {
     content: '★★★★★';
     letter-spacing: 3px;
@@ -101,3 +104,20 @@ h1{
     -webkit-text-fill-color: transparent;
   }
   
+  #ratenum{
+    position: absolute;
+    top:50%;
+    left:65%;
+  }
+
+#fieldset{
+    position: absolute;
+    top:40%;
+    color: #fc0;
+    height:20%;
+}
+
+.legend{
+    position: absolute;
+    top: 40%;
+}
