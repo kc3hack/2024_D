@@ -47,6 +47,21 @@
 }
 
 .infoimage{
+    position:absolute;
+    top:40%;
     width: 45%;
     height: 50%;
+}
+
+h1{
+    margin:auto;
+    text-align: center;
+    background-color: black;
+    color:red;
+}
+
+#review{
+    position:absolute;
+    top:35%;
+    left:55%;
 }
