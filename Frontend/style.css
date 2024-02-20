@@ -81,15 +81,15 @@ h1{
 /* 変数設定 */
 :root {
     position:absolute;
-    --star-size: 30px;
+    --star-size: 27px;
     --star-color: #fff;
     --star-background: #fc0;
   }
   /* 星評価のスタイル */
   .stars {
     position:absolute;
-    top:47%;
-    right:5%;
+    top:10%;
+    left:3%;
     display: inline-block;
     font-size: var(--star-size);
     font-family: Times;
@@ -106,8 +106,8 @@ h1{
   
   #ratenum{
     position: absolute;
-    top:50%;
-    left:65%;
+    top:30%;
+    left:45%;
   }
 
 #fieldset{
@@ -120,4 +120,11 @@ h1{
 .legend{
     position: absolute;
     top: 40%;
+}
+#meter{
+    left:32%;
+    font-size:25px;
+    font-weight:bold;
+    position:absolute;
+    top:0%;
 }
