@@ -1,31 +1,32 @@
 package com.example.randommapapi.Controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@RestController
 public class test_api {
 
-    public static void main(String[] args) {
-        test_api testApi = new test_api();
-        testApi.getRestaurantInfo();
-    }
-    public void getRestaurantInfo() {
+    @PostMapping("/getRestaurantInfo")
+    public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
         RestTemplate restTemplate = new RestTemplate();
-        String apiKey =System.getenv("API");
-        System.out.println("API Key: " + apiKey);  // あなたのAPIキーに置き換えてください
-        double latitude = 34.99589051907792; // 緯度
-        double longitude = 135.74090035776118; // 経度
-        String type = "restaurant";
-        int range = 1000;
-        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&types=%s&key=%s", latitude, longitude, range,type,apiKey);
+        String apiKey = System.getenv("API");
+        double latitude = Double.parseDouble(payload.get("latitude").toString());
+        double longitude = Double.parseDouble(payload.get("longitude").toString());
+        int range = Integer.parseInt(payload.get("range").toString());
+        String type = payload.get("type").toString();
+        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&types=%s&key=%s", latitude, longitude, range, type, apiKey);
 
         String response = restTemplate.getForObject(url, String.class);
-        System.out.println(response);
         List<PlaceInfo> places = new ArrayList<>();
         try {
             JSONObject jsonObject = new JSONObject(response);
@@ -48,9 +49,10 @@ public class test_api {
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
-            System.out.println(outputJson.toString());
+            return outputJson.toString();
         } catch (JSONException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -63,15 +65,6 @@ public class test_api {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
-        }
-
-        @Override
-        public String toString() {
-            return "PlaceInfo{" +
-                    "name='" + name + '\'' +
-                    ", rating=" + rating +
-                    ", inclose=" + isOpen +
-                    '}';
         }
     }
 }
