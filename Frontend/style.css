@@ -13,7 +13,7 @@ body{
     left: 5%;
     width: 90%;
     height: 45%;
-    background-color: aqua;
+    background-color: rgba(132, 230, 221, 0.623);
 }
 #list_frame{
     bottom: 5%;
@@ -65,8 +65,17 @@ a{
     top:92%;
 }
 
-h1{
-    margin:auto;
+h2{
+    text-align: center;
+}
+
+#storename{
+    position: absolute;
+    font-weight:border;
+    font-size: 200%;
+    top:10%;
+    width:100%;
+    height:13%;
     text-align: center;
     background-color: black;
     color:red;
