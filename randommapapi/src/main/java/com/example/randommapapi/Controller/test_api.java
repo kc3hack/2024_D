@@ -20,7 +20,9 @@ public class test_api {
         System.out.println("API Key: " + apiKey);  // あなたのAPIキーに置き換えてください
         double latitude = 34.99589051907792; // 緯度
         double longitude = 135.74090035776118; // 経度
-        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=1000&types=restaurant&key=%s", latitude, longitude, apiKey);
+        String type = "restaurant";
+        int range = 1000;
+        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&types=%s&key=%s", latitude, longitude, range,type,apiKey);
 
         String response = restTemplate.getForObject(url, String.class);
         System.out.println(response);
