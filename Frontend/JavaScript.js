@@ -24,10 +24,10 @@ const Main_Frame = {
     Load:document.getElementById("load"),
 }
 const Info = {
-    NAME_T:document.getElementById(""),
-    STAR_T:document.getElementById(""),
-    STAR_S:document.getElementById(""),
-    DIST_T:document.getElementById(""),
+    NAME_T:document.getElementById("name_text"),
+    STAR_T:document.getElementById("rating_text"),
+    STAR_S:document.getElementById("rating_star"),
+    DIST_T:document.getElementById("distance_text"),
 }
 const List_Frame = document.getElementById("list");
 const Setting = {
@@ -133,6 +133,10 @@ const GetPosi = ()=>{//GetInfoの同期処理
 }
 const DispInfo = (info)=>{
     //情報をInfoに表示する
+    Info.NAME_T.innerText = info.name;
+    Info.STAR_T.innerText = info.rating;
+    Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
+    Info.DIST_T.innerText = `${info.distance}m`;
     console.log(info);
 }
 
@@ -174,7 +178,7 @@ Setting.RAN_S.addEventListener('input', (e)=>{
     Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
 window.addEventListener('popstate', (e)=>{
-    console.log("NO!Back");
+    alert("NO!Back")
     history.pushState(null, null, null);
     return;
 });
