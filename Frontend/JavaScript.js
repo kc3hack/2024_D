@@ -23,6 +23,12 @@ const Main_Frame = {
     Set:document.getElementById("setting"),
     Load:document.getElementById("load"),
 }
+const Info = {
+    NAME_T:document.getElementById(""),
+    STAR_T:document.getElementById(""),
+    STAR_S:document.getElementById(""),
+    DIST_T:document.getElementById(""),
+}
 const List_Frame = document.getElementById("list");
 const Setting = {
     RAN_S:document.getElementById("slider_ran"),
@@ -47,39 +53,70 @@ let Type = {
 const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、"
 let NowLoad = false;
 
+//受信JSON
+let list = [];
+
+const test_json = {
+    plase:[
+        {
+            name:"天下一品",
+            inclose:true,
+            rating:4.5,
+            distance:300,
+        },
+        {
+            name:"来来亭",
+            inclose:false,
+            rating:3.5,
+            distance:200,
+        },
+    ]
+}
+
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
     Display("Load");
     NowLoad = true;
     Load();
-    const posi = await GetPosi();
-    //緯度：posi.coords.latitude
-    //経度：posi.coords.longitude
-    
+
     GetSetting();//設定の更新
 
-    const json = {
-        latitude:posi.coords.latitude,
-        longitude:posi.coords.longitude,
-        range:Range,
-        inclose:InClouse,
-        type:[],
+    if(list.length == 0){
+        const posi = await GetPosi();
+        //緯度：posi.coords.latitude
+        //経度：posi.coords.longitude
+
+        const json = {
+            latitude:posi.coords.latitude,
+            longitude:posi.coords.longitude,
+            range:Range,
+            inclose:InClouse,
+            type:[],
+        }
+        for(let i of Object.values(Type)){
+            if(i.Value == true){json.type.push(i.Name)}
+        }
+        try{
+            const res = await fetch(URL, {
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body:JSON.stringify(test_json)//変更--修正忘れ注意
+            });
+            const res_json = await res.json();
+            list = res_json.json.plase;
+        }catch(e){
+            console.error("Error:", e);
+        }
+        console.log("Get JsonDate successful");
     }
-    for(let i of Object.values(Type)){
-        if(i.Value == true){json.type.push(i.Name)}
-    }
-    try{
-        const res = await fetch(URL, {
-            method: "POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body:JSON.stringify(json)
-        });
-        const res_json = await res.json();
-        console.log(res_json.json);
-    }catch(e){
-        console.error("Error:", e);
-    }
+
+    const i = Math.floor(Math.random()*list.length);
+
+    DispInfo(list[i]);
+
+    list.splice(i, 1);
+
     NowLoad = false;
     Display("Info");
 }
@@ -93,6 +130,10 @@ const GetPosi = ()=>{//GetInfoの同期処理
             console.error("Error:", e);
         }
     })
+}
+const DispInfo = (info)=>{
+    //情報をInfoに表示する
+    console.log(info);
 }
 
 function Display(Name){
@@ -115,7 +156,6 @@ function Load(){
         i++
         if(!NowLoad){
             clearInterval(loop);
-            console.log("OK");
         }
     }, 75);
     
@@ -133,4 +173,10 @@ function GetSetting(){
 Setting.RAN_S.addEventListener('input', (e)=>{
     Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
+window.addEventListener('popstate', (e)=>{
+    console.log("NO!Back");
+    history.pushState(null, null, null);
+    return;
+});
+history.pushState(null, null, null);
 //console.log(やる気);
