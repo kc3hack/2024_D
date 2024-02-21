@@ -48,7 +48,7 @@ public class test_api {
                 places.add(new PlaceInfo(name, rating, isOpen));
             }
             // JSON形式で出力
-            JSONObject outputJson =  new JSONObject();
+            JSONObject outputJson = new JSONObject();
             JSONArray placeArray = new JSONArray();
             for (PlaceInfo place : places) {
                 JSONObject placeJson = new JSONObject();
