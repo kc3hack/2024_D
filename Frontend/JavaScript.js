@@ -53,8 +53,10 @@ let Type = {
 const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、"
 let NowLoad = false;
 
-//受信JSON
+//送受信データ
 let list = [];
+let tmep_json;
+let temp_info = [];
 
 const test_json = {
     plase:[
@@ -74,28 +76,29 @@ const test_json = {
 }
 
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
+    /*ロード画面の表示*/
     Display("Load");
     NowLoad = true;
     Load();
 
+    /*送信JSONを作る*/
     GetSetting();//設定の更新
+    const posi = await GetPosi();
+    const json = {
+        latitude:posi.coords.latitude,
+        longitude:posi.coords.longitude,
+        range:Range,
+        inclose:InClouse,
+        type:[],
+    }
+    for(let i of Object.values(Type)){
+        if(i.Value == true){json.type.push(i.Name)}
+    }
 
-    if(list.length == 0){
-        const posi = await GetPosi();
-        //緯度：posi.coords.latitude
-        //経度：posi.coords.longitude
-
-        const json = {
-            latitude:posi.coords.latitude,
-            longitude:posi.coords.longitude,
-            range:Range,
-            inclose:InClouse,
-            type:[],
-        }
-        for(let i of Object.values(Type)){
-            if(i.Value == true){json.type.push(i.Name)}
-        }
+    /*バックエンドと送受信*/
+    if(ChangeJson(json) || list.length == 0){//検索条件の変更or全閲覧
         try{
+            tmep_json = json;//送信Jsonの保存
             const res = await fetch(URL, {
                 method: "POST",
                 headers:{
@@ -111,16 +114,17 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
         console.log("Get JsonDate successful");
     }
 
+    /*表示*/
     const i = Math.floor(Math.random()*list.length);
-
-    DispInfo(list[i]);
-
+    temp_info.push(list[i]);
+    if(temp_info.length > 3){temp_info.shift();}
+    DispInfo();
     list.splice(i, 1);
 
     NowLoad = false;
     Display("Info");
 }
-const GetPosi = ()=>{//GetInfoの同期処理
+const GetPosi = ()=>{//同期的な位置情報の取得
     return new Promise((resolve)=>{
         try{
             navigator.geolocation.getCurrentPosition((posi)=> {
@@ -131,8 +135,15 @@ const GetPosi = ()=>{//GetInfoの同期処理
         }
     })
 }
-const DispInfo = (info)=>{
-    //情報をInfoに表示する
+const ChangeJson = (json)=>{
+    if(tmep_json == undefined)return true;
+    if(json.range != tmep_json.range)return true;
+    if(json.inclose != tmep_json.inclose)return true;
+    if(json.type.toString() != tmep_json.type.toString())return true;
+    return false;
+}
+const DispInfo = ()=>{//情報をInfoフレームに表示する
+    const info = temp_info[temp_info.length-1];
     Info.NAME_T.innerText = info.name;
     Info.STAR_T.innerText = info.rating;
     Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
@@ -178,7 +189,12 @@ Setting.RAN_S.addEventListener('input', (e)=>{
     Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
 window.addEventListener('popstate', (e)=>{
-    alert("NO!Back")
+    if(temp_info.length > 1){
+        temp_info.pop();
+        DispInfo();
+    }else{
+        alert("そんな昔のこと覚えてへんわ");
+    }
     history.pushState(null, null, null);
     return;
 });
