@@ -1,9 +1,12 @@
 package com.example.randommapapi.Controller;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.example.randommapapi.randommapapi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,12 @@ import org.json.JSONObject;
 
 @RestController
 public class test_api {
+
+
+    public static void main(String[] args) {
+		SpringApplication.run(randommapapi.class, args);
+		//resources/application.propertiesを触ってportを8081にしてます　理由は、私のローカル環境のせいです　なにかあれば変更してください
+	}
 
     @PostMapping("/getRestaurantInfo")
     public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
