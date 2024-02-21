@@ -13,7 +13,11 @@ body{
     left: 5%;
     width: 90%;
     height: 45%;
-    background-color: rgba(132, 230, 221, 0.623);
+
+    background-color: #f7f6dc;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 10px;
 }
 #list_frame{
     bottom: 5%;
@@ -53,7 +57,7 @@ body{
     font-weight: bold;
 }
 
-.infoimage{
+.image_img{
     position:absolute;
     top:40%;
     width: 45%;
@@ -69,7 +73,7 @@ h2{
     text-align: center;
 }
 
-#storename{
+#name_text{
     position: absolute;
     font-weight:border;
     font-size: 200%;
@@ -95,7 +99,7 @@ h2{
     --star-background: #fc0;
   }
   /* 星評価のスタイル */
-  .stars {
+  #rating_star {
     position:absolute;
     top:10%;
     left:3%;
@@ -104,7 +108,7 @@ h2{
     font-family: Times;
     line-height: 1;
   }
-  .stars::before {
+  #rating_star::before {
     content: '★★★★★';
     letter-spacing: 3px;
     background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
@@ -113,7 +117,7 @@ h2{
     -webkit-text-fill-color: transparent;
   }
   
-  #ratenum{
+  #rating_text{
     position: absolute;
     top:30%;
     left:45%;
@@ -130,7 +134,7 @@ h2{
     position: absolute;
     top: 40%;
 }
-#meter{
+#distance_text{
     left:32%;
     font-size:25px;
     font-weight:bold;
