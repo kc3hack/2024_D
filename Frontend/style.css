@@ -141,3 +141,19 @@ h2{
     position:absolute;
     top:0%;
 }
+
+#title_name{
+    position: absolute;
+    width:500px;
+    top:100px;
+    text-align: center;
+    font-size: 35px;
+    font-family: "Nico Moji";
+  }
+
+.subtitle{
+    position:absolute;
+    font-size: 20px;
+    top:200px;
+    width:1000px;    
+}
