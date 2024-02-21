@@ -17,6 +17,9 @@
 //フェッチURL
 const URL = "https://httpbin.org/post";
 
+//GoogleMap検索のURL
+const Search_URL = "https://maps.google.co.jp/maps?q="
+
 //HTML要素
 const Main_Frame = {
     Info:document.getElementById("info"),
@@ -25,6 +28,7 @@ const Main_Frame = {
 }
 const Info = {
     NAME_T:document.getElementById("name_text"),
+    SACH_L:document.getElementById("search_link"),
     STAR_T:document.getElementById("rating_text"),
     STAR_S:document.getElementById("rating_star"),
     DIST_T:document.getElementById("distance_text"),
@@ -145,6 +149,7 @@ const ChangeJson = (json)=>{
 const DispInfo = ()=>{//情報をInfoフレームに表示する
     const info = temp_info[temp_info.length-1];
     Info.NAME_T.innerText = info.name;
+    Info.SACH_L.href = `${Search_URL}${info.name}`
     Info.STAR_T.innerText = info.rating;
     Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
     Info.DIST_T.innerText = `${info.distance}m`;
