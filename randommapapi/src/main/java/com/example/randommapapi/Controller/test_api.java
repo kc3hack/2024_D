@@ -29,8 +29,8 @@ public class test_api {
     public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
         RestTemplate restTemplate = new RestTemplate();
         String apiKey = System.getenv("API");
-        double latitude = Double.parseDouble(payload.get("latitude").toString());
-        double longitude = Double.parseDouble(payload.get("longitude").toString());
+        String latitude =payload.get("latitude").toString();
+        String longitude =payload.get("longitude").toString();
         int range = Integer.parseInt(payload.get("range").toString());
         String type = payload.get("type").toString();
         String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&types=%s&key=%s", latitude, longitude, range, type, apiKey);
