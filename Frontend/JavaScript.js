@@ -54,7 +54,7 @@ let Type = {
     STO:{Name:"store", Value:true},
 }
 
-const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、"
+const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、、、、、、、、、、、"
 let NowLoad = false;
 
 //送受信データ
@@ -75,6 +75,12 @@ const test_json = {
             inclose:false,
             rating:3.5,
             distance:200,
+        },
+        {
+            name:"新福菜館",
+            inclose:true,
+            rating:4.0,
+            distance:500,
         },
     ]
 }
@@ -112,6 +118,7 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
             });
             const res_json = await res.json();
             list = res_json.json.plase;
+/* 完成時にres_json.json.plaseからres_json.plaseに変更*/
         }catch(e){
             console.error("Error:", e);
         }
