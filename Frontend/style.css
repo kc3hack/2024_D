@@ -142,18 +142,89 @@ h2{
     top:0%;
 }
 
+#title_disp{
+    background-color:#fc0
+        
+}
+
 #title_name{
-    position: absolute;
-    width:500px;
-    top:100px;
-    text-align: center;
-    font-size: 35px;
+    position:absolute;
     font-family: "Nico Moji";
+    font-size:100%;
+    width:100%;
+}
+
+#title_frame{
+    top:5%;
+    left:5%;
+    width: 90%;
+    height:90%;
+}
+
+#title_name{
+    position:absolute;
+    bottom:20%;
+    font-family:"Nico Moji";
+    font-size: 40px;
+    text-align:center;
+    top:10%;
+}
+
+a.btn--red.btn--cubic {
+    position:absolute;
+    bottom:20%;
+    border-bottom: 5px solid #9f000c;
+  }
+  
+  a.btn--red.btn--cubic:hover {
+    position:absolute;
+    bottom:20%;
+    margin-top: 3px;
+    border-bottom: 2px solid #9f000c;
+  }
+  
+  a.btn--radius {
+    position:absolute;
+    bottom:20%;
+    border-radius: 100vh;
+  }
+  
+  .fa-position-right {
+    position: absolute;
+    bottom:20%;
+    top: calc(50% - .5em);
+    right: 1rem;
   }
 
-.subtitle{
+
+  a.btn--red {
     position:absolute;
-    font-size: 20px;
-    top:200px;
-    width:1000px;    
-}
+    bottom:20%;
+    color: #000;
+    background-color: #da0707;
+    border-bottom: 5px solid #da0707;
+  }
+
+  .btn,
+  a.btn,
+  button.btn {
+    left:18%;
+    height:6%;
+    bottom:30%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: absolute;
+    display: inline-block;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
