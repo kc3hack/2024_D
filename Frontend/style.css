@@ -150,13 +150,8 @@ h2{
 }
 
 #title_name{
-    position:absolute;
-    top:10%;
-    bottom:20%;
-    width:100%;
-    font-family:"Nico Moji";
-    font-size: 45px;
-    text-align:center;
+        font-family: "Nico Moji";
+    font-size: 200%;
 }
 
 .start_btn{
@@ -170,7 +165,48 @@ h2{
     border-radius: 10px;
     border-width: 0px 0px 5px 5px;
     border-color: #9f000c;
+}
 
-    font-family: "Nico Moji";
-    font-size: 200%;
+  .btn,
+  a.btn,
+  button.btn {
+    left:18%;
+    height:6%;
+    bottom:30%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: absolute;
+    display: inline-block;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
+
+.open_now{
+    position:absolute;
+    background-color:#00ff1a;
+    font-size: 100%;
+    top:86%;
+    left:28%;
+    padding:1px;
+    border:solid 2px rgb(0, 0, 0);
+}
+
+.close_now{
+    position:absolute;
+    background-color:#ff0000;
+    font-size: 100%;
+    top:86%;
+    left:28%;
+    padding:1px;
+    border:solid 2px rgb(0, 0, 0);
 }
