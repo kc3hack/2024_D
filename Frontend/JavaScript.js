@@ -36,6 +36,7 @@ const Info = {
     STAR_T:document.getElementById("rating_text"),
     STAR_S:document.getElementById("rating_star"),
     DIST_T:document.getElementById("distance_text"),
+    OPEN_T:document.getElementById("open_text")
 }
 const List_Frame = document.getElementById("list");
 const Setting = {
@@ -70,19 +71,19 @@ const test_json = {
     plase:[
         {
             name:"天下一品",
-            inclose:true,
+            open_now:true,
             rating:4.5,
             distance:300,
         },
         {
             name:"来来亭",
-            inclose:false,
+            open_now:false,
             rating:3.5,
             distance:200,
         },
         {
             name:"新福菜館",
-            inclose:true,
+            open_now:true,
             rating:4.0,
             distance:500,
         },
@@ -164,6 +165,9 @@ const DispInfo = ()=>{//情報をInfoフレームに表示する
     Info.STAR_T.innerText = info.rating;
     Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
     Info.DIST_T.innerText = `${info.distance}m`;
+    Info.OPEN_T.innerText = (info.open_now == true)? "営業中":"時間外";
+    Info.OPEN_T.className = (info.open_now == true)? "open_now":"close_now";
+
     console.log(info);
 }
 
