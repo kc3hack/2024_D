@@ -150,12 +150,8 @@ h2{
 }
 
 #title_name{
-    position:absolute;
-    bottom:20%;
-    font-family:"Nico Moji";
-    font-size: 40px;
-    text-align:center;
-    top:10%;
+        font-family: "Nico Moji";
+    font-size: 200%;
 }
 
 .start_btn{
@@ -166,8 +162,10 @@ h2{
     width: 60%;
 
     background-color: #da0707;
-    border-bottom: 5px solid #da0707;
-  }
+    border-radius: 10px;
+    border-width: 0px 0px 5px 5px;
+    border-color: #9f000c;
+}
 
   .btn,
   a.btn,
