@@ -9,7 +9,7 @@
     </head>
     <body>
         <!--ここにHTMLを書く-->
-        <div id="title_disp">
+        <div id="title_disp" style="display: none;">
           <div id="title_frame" class="frame">
             <div id="title_name">
               <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
@@ -18,13 +18,15 @@
               <a href="" class="btn btn--red btn--radius btn--cubic" style="position:absolute; top:70%; ">PUSH！<i class="fas fa-angle-right fa-position-right" style="position:absolute; top:20%;"></i></a>
           </div>
         </div>
-        <div id="main_disp" style="display: none;">
+        <div id="main_disp">
           <div id="main_frame" class="frame">
               <!--メイン画面-->
               <div id="info">
                   <!--ここに情報画面(おすすめの店舗情報)-->
                   <h2>おすすめの店があるねん!!</h2>
                   <p id="name_text">店舗名</p>
+                  <p class="open_now">営業中</p>
+                  <p class="close_now">営業時間外</p>
                   <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="image_img" >
                   <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" id="search_link">mapを見る</a>
                   <div>

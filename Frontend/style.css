@@ -228,3 +228,12 @@ a.btn--red.btn--cubic {
     color: #212529;
     border-radius: 0.5rem;
   }
+
+.open_now{
+    position:absolute;
+    background-color:#00ff1a;
+    
+    font-size: 100%;
+    top:20%;
+    left:30%;
+}
