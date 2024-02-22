@@ -41,104 +41,122 @@ body{
     background-image: url(img/obatyan.png);
     background-size: cover;
 }
-#button_frame{
 
-
-    font-weight: bold;
-    border: 0px;
-    border-radius: 10px;
-    background-color: #ffd803;
-}
 #load{
     font-size: 150%;
     font-weight: bold;
 }
 
-.image_img{
-    position:absolute;
-    top:40%;
-    width: 45%;
-    height: 50%;
-}
-
-a{
-    position:absolute;
-    top:92%;
-}
-
-h2{
+.info_text{
     text-align: center;
+    margin: 0%;
 }
-
 #name_text{
     position: absolute;
-    font-weight:border;
-    font-size: 200%;
-    top:10%;
+    top:15%;
+    left: 0%;
     width:100%;
-    height:13%;
-    text-align: center;
-    background-color: black;
-    color:red;
+    height: 15%;
+    font-size: 200%;
+    font-weight: bold;
+    background-color: #ffd803;
+    border-radius: 10px 10px 0px 0px;
+    color: black;
 }
-
-#review{
+.photo_img{
     position:absolute;
+    margin: 0%;
     top:35%;
-    left:55%;
+    left: 5%;
+    width: 40%;
+    height: 36vw;
 }
-
-/* 変数設定 */
+#search_link{
+    position:absolute;
+    top: 90%;
+    left: 5%;
+    width: 40%;
+}
+#rating_border{
+    position: absolute;
+    margin: 0%;
+    top: 35%;
+    right: 5%;
+    width: 40%;
+    height: 20%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
+}
 :root {
     position:absolute;
-    --star-size: 27px;
     --star-color: #6e6e6e;
-    --star-background: #fc0;
-  }
-  /* 星評価のスタイル */
-  #rating_star {
+    --star-background: #ffd803;
+}
+    /* 星評価のスタイル */
+    #rating_star {
     position:absolute;
     top:10%;
-    left:3%;
+    text-align: center;
     display: inline-block;
-    font-size: var(--star-size);
+    font-size: 27px;
     font-family: Times;
     line-height: 1;
-  }
-  #rating_star::before {
+}
+    #rating_star::before {
     content: '★★★★★';
     letter-spacing: 3px;
     background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
     -webkit-background-clip: text;
             background-clip: text;
     -webkit-text-fill-color: transparent;
-  }
-  
+}
   #rating_text{
     position: absolute;
-    top:30%;
-    left:45%;
-  }
-
-#fieldset{
-    position: absolute;
-    top:40%;
-    color: #fc0;
-    height:20%;
+    top:60%;
+    left: 0%;
+    width: 100%;
+    font-weight: bold;
 }
-
-.legend{
+#distance_border{
     position: absolute;
-    top: 40%;
+    margin: 0%;
+    top: 60%;
+    right: 5%;
+    width: 40%;
+    height: 15%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
 }
 #distance_text{
-    left:32%;
-    font-size:25px;
-    font-weight:bold;
-    position:absolute;
-    top:0%;
+    position: absolute;
+    margin: 0%;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
 }
-
+#open_border{
+    position: absolute;
+    margin: 0%;
+    top: 80%;
+    right: 5%;
+    width: 40%;
+    height: 10%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
+    background: repeating-linear-gradient(-45deg,var(--color), var(--color),1px, rgba(0,0,0,0.0) 0, rgba(0,0,0,0.0) 14px);
+}
+#open_text{
+    position: absolute;
+    margin: 0%;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
 .open_now{
     position:absolute;
     background-color:#00ff1a;

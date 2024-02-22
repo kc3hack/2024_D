@@ -9,7 +9,7 @@
     </head>
     <body>
         <!--ここにHTMLを書く-->
-        <div id="title_disp">
+        <div id="title_disp" style="display: none;">
           <div id="title_frame" class="frame">
             <div id="title_name">
               <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
@@ -18,33 +18,28 @@
             <input type="button" value="PUSH！" class="btn" id="start_btn" onclick="Start_Btn()">
           </div>
         </div>
-        <div id="main_disp"  style="display: none;">
+        <div id="main_disp">
           <div id="main_frame" class="frame">
               <!--メイン画面-->
               <div id="info">
-                  <!--ここに情報画面(おすすめの店舗情報)-->
-                  <h2>おすすめの店があるねん!!</h2>
-                  <p id="name_text">店舗名</p>
-                  <p class="open_now" id="open_text">営業中</p>
-                  
-                  <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="image_img" >
-                  <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" id="search_link">mapを見る</a>
-                  <div>
-                    <fieldset style="border: #0000ff solid 2px; position:absolute; width:40%; height:20%; top:38%; right:3%;">
-                      <legend style="text-align: center;">レビュー評価</legend>
-                      <div style="--percent: 70%;" id="rating_star"></div>
-                      <p id="rating_text">4.7</p>
-                    </fieldset>
-                  </div>
+                <h2 class="info_text">おすすめの店があるねん!!</h2>
+                <p class="info_text" id="name_text">店舗名</p>
+                <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="photo_img" >
+                <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" class="info_text" id="search_link">GoogleMapで開く</a>
 
-                  <div>
-                    <fieldset style="border:#0000ff solid 2px; position:absolute; width:40%; height:20%; top:70%; right:3%;">
-                      <legend style="text-align:center;">ここからの距離</legend>
-                      <p id="distance_text">280m</p>
-                    </fieldset>
-                  </div>
-
-                  <!--↑CSSでいい感じに-->
+                <fieldset id="rating_border">
+                  <legend class="info_text">レビュー評価</legend>
+                  <div style="--percent:70%" id="rating_star"></div>
+                  <p class="info_text" id="rating_text">4.7</p>
+                </fieldset>
+                <fieldset id="distance_border">
+                  <legend class="info_text">ここからの距離</legend>
+                  <p id="distance_text">280m</p>
+                </fieldset>
+                <fieldset id="open_border" style="--color:#00ff1a;">
+                  <legend class="info_text">現在の状態</legend>
+                  <p id="open_text" class="info_text">営業中</p>
+                </fieldset>
               </div>
               <div id="setting" style="display: none;">
                   <!--ここに設定画面-->

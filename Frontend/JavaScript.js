@@ -36,7 +36,8 @@ const Info = {
     STAR_T:document.getElementById("rating_text"),
     STAR_S:document.getElementById("rating_star"),
     DIST_T:document.getElementById("distance_text"),
-    OPEN_T:document.getElementById("open_text")
+    OPEN_T:document.getElementById("open_text"),
+    OPEN_B:document.getElementById("open_border"),
 }
 const List_Frame = document.getElementById("list");
 const Setting = {
@@ -166,7 +167,7 @@ const DispInfo = ()=>{//情報をInfoフレームに表示する
     Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
     Info.DIST_T.innerText = `${info.distance}m`;
     Info.OPEN_T.innerText = (info.open_now == true)? "営業中":"時間外";
-    Info.OPEN_T.className = (info.open_now == true)? "open_now":"close_now";
+    Info.OPEN_B.style.setProperty('--color', (info.open_now == true)? "#00ff1a":"#ff0000");
 
     console.log(info);
 }
