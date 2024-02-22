@@ -201,6 +201,11 @@ function GetSetting(){
     Type.STO.Value = Setting.STO_C.checked;
 }
 
+function Start_Btn(){
+    Display_Frame.Title.style.display = "none";
+    Display_Frame.Main.style.display = "";
+}
+
 Setting.RAN_S.addEventListener('input', (e)=>{
     Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
