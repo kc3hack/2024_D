@@ -42,10 +42,7 @@ body{
     background-size: cover;
 }
 #button_frame{
-    bottom: 5%;
-    right: 5%;
-    width: 45%;
-    height: 7.5%;
+
 
     font-weight: bold;
     border: 0px;
@@ -181,18 +178,26 @@ h2{
     text-align:center;
 }
 
-.start_btn{
+.btn{
     position: fixed;
+    background-color:  #ffd803;
+    border-radius: 10px;
+    border-width: 0px 0px 5px 5px;
+    border-color:  #d8b800;
+    font-family: "Nico Moji";
+}
+
+#start_btn{
     top: 70%;
     left: 20%;
     height: 10%;
     width: 60%;
-
-    background-color: #da0707;
-    border-radius: 10px;
-    border-width: 0px 0px 5px 5px;
-    border-color: #9f000c;
-
-    font-family: "Nico Moji";
+    font-size: 200%
+}
+#next_btn{
+    bottom: 5%;
+    right: 5%;
+    width: 45%;
+    height: 7.5%;
     font-size: 200%
 }

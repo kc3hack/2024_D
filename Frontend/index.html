@@ -15,7 +15,7 @@
               <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
               <p class="title_name">おせっかいmap</p>
             </div>
-            <input type="button" value="PUSH！" class="start_btn" onclick="Start_Btn()">
+            <input type="button" value="PUSH！" class="btn" id="start_btn" onclick="Start_Btn()">
           </div>
         </div>
         <div id="main_disp"  style="display: none;">
@@ -54,7 +54,7 @@
                       <input type="range" id="slider_ran" min="100" max="2000" step="100" value="500">
                       <label for="slider_ran" id="ran_text">:500m</label><br><br>
                       <input type="checkbox" id="check_icl"/>
-                      <label for="officehour">営業時間外も含む</label>
+                      <label for="check_icl">営業時間外も含む</label>
                   </div>
                   <br>
                   <fieldset>
@@ -87,7 +87,7 @@
             <div id="list">・そば屋<br>・ラーメン<br>・牛丼</div>
           </div>
           <div id="image_frame" class="frame" onclick="Display('Set')"></div>
-          <input type="button" value="別のおばちゃんに聞く" id="button_frame" class="frame" onclick="GetInfo()">
+          <input type="button" value="ほかのヒト" class="btn" id="next_btn" onclick="GetInfo()">
           <!--CSSでいい感じのボタンに-->
         </div>
         <script src="JavaScript.js" defer></script>
