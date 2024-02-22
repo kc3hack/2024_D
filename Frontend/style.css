@@ -142,6 +142,26 @@ h2{
     top:0%;
 }
 
+.open_now{
+    position:absolute;
+    background-color:#00ff1a;
+    font-size: 100%;
+    top:86%;
+    left:28%;
+    padding:1px;
+    border:solid 2px rgb(0, 0, 0);
+}
+
+.close_now{
+    position:absolute;
+    background-color:#ff0000;
+    font-size: 100%;
+    top:86%;
+    left:28%;
+    padding:1px;
+    border:solid 2px rgb(0, 0, 0);
+}
+
 #title_frame{
     top:5%;
     left:5%;
