@@ -16,6 +16,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @RestController
 public class test_api {
 
@@ -24,7 +26,7 @@ public class test_api {
 		SpringApplication.run(randommapapi.class, args);
 		//resources/application.propertiesを触ってportを8081にしてます　理由は、私のローカル環境のせいです　なにかあれば変更してください
 	}
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/getRestaurantInfo")
     public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
         RestTemplate restTemplate = new RestTemplate();
