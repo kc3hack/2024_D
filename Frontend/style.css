@@ -170,70 +170,18 @@ h2{
     top:10%;
 }
 
-a.btn--red.btn--cubic {
-    position:absolute;
-    bottom:20%;
-    border-bottom: 5px solid #9f000c;
-  }
-  
-  a.btn--red.btn--cubic:hover {
-    position:absolute;
-    bottom:20%;
-    margin-top: 3px;
-    border-bottom: 2px solid #9f000c;
-  }
-  
-  a.btn--radius {
-    position:absolute;
-    bottom:20%;
-    border-radius: 100vh;
-  }
-  
-  .fa-position-right {
-    position: absolute;
-    bottom:20%;
-    top: calc(50% - .5em);
-    right: 1rem;
-  }
+.start_btn{
+    position: fixed;
+    top: 70%;
+    left: 20%;
+    height: 10%;
+    width: 60%;
 
-
-  a.btn--red {
-    position:absolute;
-    bottom:20%;
-    color: #000;
     background-color: #da0707;
-    border-bottom: 5px solid #da0707;
-  }
+    border-radius: 10px;
+    border-width: 0px 0px 5px 5px;
+    border-color: #9f000c;
 
-  .btn,
-  a.btn,
-  button.btn {
-    left:18%;
-    height:6%;
-    bottom:30%;
-    font-size: 1.6rem;
-    font-weight: 700;
-    line-height: 1.5;
-    position: absolute;
-    display: inline-block;
-    padding: 1rem 3rem;
-    cursor: pointer;
-    user-select: none;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
-    text-align: center;
-    vertical-align: middle;
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    color: #212529;
-    border-radius: 0.5rem;
-  }
-
-.open_now{
-    position:absolute;
-    background-color:#00ff1a;
-    
-    font-size: 100%;
-    top:20%;
-    left:30%;
+    font-family: "Nico Moji";
+    font-size: 200%;
 }
