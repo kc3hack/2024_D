@@ -9,7 +9,7 @@
     </head>
     <body>
         <!--ここにHTMLを書く-->
-        <div id="title_disp" style="display: none;">
+        <div id="title_disp">
           <div id="title_frame" class="frame">
             <div id="title_name">
               <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
@@ -18,10 +18,10 @@
             <input type="button" value="PUSH！" class="btn" id="start_btn" onclick="Start_Btn()">
           </div>
         </div>
-        <div id="main_disp">
+        <div id="main_disp" style="display: none;">
           <div id="main_frame" class="frame">
               <!--メイン画面-->
-              <div id="info" style="display: none;">
+              <div id="info">
                 <h2 class="info_text">おすすめの店があるねん!!</h2>
                 <p class="info_text" id="name_text">店舗名</p>
                 <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="photo_img" >
@@ -40,7 +40,7 @@
                   <p id="open_text" class="info_text">営業中</p>
                 </fieldset>
               </div>
-              <div id="setting">
+              <div id="setting" style="display: none;">
                   <!--ここに設定画面-->
                 <div id="slider">
                   <label for="slider_ran" class="label">検索範囲：</label><br>
