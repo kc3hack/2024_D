@@ -56,7 +56,7 @@ public class test_api {
                 JSONObject placeJson = new JSONObject();
                 placeJson.put("name", place.name);
                 placeJson.put("rating", place.rating);
-                placeJson.put("inclose", place.isOpen);
+                placeJson.put("open_now", place.isOpen);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
