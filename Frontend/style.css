@@ -95,7 +95,7 @@ h2{
 :root {
     position:absolute;
     --star-size: 27px;
-    --star-color: #fff;
+    --star-color: #6e6e6e;
     --star-background: #fc0;
   }
   /* 星評価のスタイル */
