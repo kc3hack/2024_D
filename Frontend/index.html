@@ -9,55 +9,73 @@
     </head>
     <body>
         <!--ここにHTMLを書く-->
-        <div id="main_frame" class="frame">
-            <!--メイン画面-->
-            <div id="info" style="display: none;">
-                <!--ここに情報画面(おすすめの店舗情報)-->
-                <h2>おすすめの店があるねん</h2>
-                <!--↑CSSでいい感じに-->
+        <div id="title_disp">
+          <div id="title_frame" class="frame">
+            <div id="title_name">
+              <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+              <p class="title_name">おせっかいmap</p>
             </div>
-            <div id="setting">
-                <!--ここに設定画面-->
-
-                <div>
-                    <label for="area">検索範囲：</label><br />
-                    <input type="range"> <br><br>
-                    <input type="checkbox" />
-                    <label for="officehour">営業時間外も含む</label>
+            <input type="button" value="PUSH！" class="btn" id="start_btn" onclick="Start_Btn()">
+          </div>
+        </div>
+        <div id="main_disp" style="display: none;">
+          <div id="main_frame" class="frame">
+              <!--メイン画面-->
+              <div id="info">
+                <h2 class="info_text">おすすめの店があるねん!!</h2>
+                <p class="info_text" id="name_text">店舗名</p>
+                <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="photo_img" >
+                <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" class="info_text" id="search_link">GoogleMapで開く</a>
+                <fieldset id="rating_border">
+                  <legend class="info_text">レビュー評価</legend>
+                  <div style="--percent:70%" id="rating_star"></div>
+                  <p class="info_text" id="rating_text">4.7</p>
+                </fieldset>
+                <fieldset id="distance_border">
+                  <legend class="info_text">ここからの距離</legend>
+                  <p id="distance_text">280m</p>
+                </fieldset>
+                <fieldset id="open_border" style="--color:#00ff1a;">
+                  <legend class="info_text">現在の状態</legend>
+                  <p id="open_text" class="info_text">営業中</p>
+                </fieldset>
+              </div>
+              <div id="setting" style="display: none;">
+                  <!--ここに設定画面-->
+                <div id="slider">
+                  <label for="slider_ran" class="label">検索範囲：</label><br>
+                  <input type="range" id="slider_ran" min="100" max="2000" step="100" value="500">
+                  <label for="slider_ran" id="ran_text">:500m</label>
                 </div>
-                <br>
-                <fieldset>
-                    <legend>検索ジャンル</legend>
-                    <div>
-                      <input type="checkbox" id="restaurant" name="interest" value="restaurant" />
-                      <label for="restaurant">飲食店</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" id="park" name="interest" value="park" />
-                      <label for="park">施設</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" id="entertainment" name="interest" value="entertainment" />
-                      <label for="entertainment">娯楽</label>
-                    </div>
-                    <div>
-                      <input type="checkbox" id="store" name="interest" value="store" />
-                      <label for="store">売店</label>
-                    </div>
+                <div id="inclose">
+                  <input type="checkbox" id="check_icl"/>
+                  <label for="check_icl">営業時間外も含む</label>
+                </div>
+                <fieldset id="type">
+                    <legend class="label">検索ジャンル</legend>
+                      <input type="checkbox" id="check_res" name="interest" value="restaurant" checked/>
+                      <label for="check_res">飲食店</label><br>
+                      <input type="checkbox" id="check_par" name="interest" value="park" checked/>
+                      <label for="check_par">施設</label><br>
+                      <input type="checkbox" id="check_ent" name="interest" value="entertainment" checked/>
+                      <label for="check_ent">娯楽</label><br>
+                      <input type="checkbox" id="check_sto" name="interest" value="store" checked/>
+                      <label for="check_sto">売店</label><br>
                   </fieldset>
+              </div>
+              <div id="load" style="display: none;">
 
-                <!--↑この二つの入力をいい感じに-->
-            </div>
-            <!--メインフレームの中に将来的にロードとかタイトルとか-->
+              </div>
+              <!--メインフレームの中に将来的にロードとかタイトルとか-->
+          </div>
+          <div id="list_frame" class="frame">
+            <h3>周辺の一覧</h3>
+            <div id="list">・そば屋<br>・ラーメン<br>・牛丼</div>
+          </div>
+          <div id="image_frame" class="frame" onclick="Display('Set')"></div>
+          <input type="button" value="ほかのヒト" class="btn" id="next_btn" onclick="GetInfo()">
+          <!--CSSでいい感じのボタンに-->
         </div>
-        <div id="list_frame" class="frame"></div>
-        <div id="image_frame" class="frame">
-            <img src="img/obatyan.png" alt="おばちゃん">
-            <!--スマホやといい感じ、PCやとおばちゃんが飛んでく-->
-            <!--CSSからいい感じの調整方法があるか調べる-->
-        </div>
-        <input type="button" value="別のおばちゃんに聞く" id="button_frame" class="frame" onclick="GetInfo()">
-        <!--CSSでいい感じのボタンに-->
         <script src="JavaScript.js" defer></script>
     </body>
 </html>

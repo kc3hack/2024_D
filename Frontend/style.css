@@ -1,0 +1,230 @@
+@charset "utf-8";
+.frame{
+    position: fixed;
+}
+
+/**/
+body{
+    background-image: url(img/back.png);
+    /* background-size: cover; */
+}
+#main_frame{
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: 45%;
+
+    background-color: #f7f6dc;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 10px;
+}
+#list_frame{
+    bottom: 5%;
+    left: 5%;
+    width: 40%;
+    height: 35%;
+
+    background-color: #f7f6dc;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 10px;
+    /* margin: 10px; */
+
+}
+#image_frame{
+    bottom: 15%;
+    right: 5%;
+    width: 50%;
+    height: 30%;
+    /* background-color: rgb(87, 243, 152); */
+    background-image: url(img/obatyan.png);
+    background-size: cover;
+}
+
+#load{
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.info_text{
+    text-align: center;
+    margin: 0%;
+}
+#name_text{
+    position: absolute;
+    top:15%;
+    left: 0%;
+    width:100%;
+    height: 15%;
+    font-size: 200%;
+    font-weight: bold;
+    background-color: #ffd803;
+    border-radius: 10px 10px 0px 0px;
+    color: black;
+}
+.photo_img{
+    position:absolute;
+    margin: 0%;
+    top:35%;
+    left: 5%;
+    width: 40%;
+    height: 36vw;
+}
+#search_link{
+    position:absolute;
+    top: 90%;
+    left: 5%;
+    width: 40%;
+}
+#rating_border{
+    position: absolute;
+    margin: 0%;
+    top: 35%;
+    right: 5%;
+    width: 40%;
+    height: 20%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
+}
+:root {
+    position:absolute;
+    --star-color: #6e6e6e;
+    --star-background: #ffd803;
+}
+    /* 星評価のスタイル */
+    #rating_star {
+    position:absolute;
+    top:10%;
+    text-align: center;
+    display: inline-block;
+    font-size: 27px;
+    font-family: Times;
+    line-height: 1;
+}
+    #rating_star::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  #rating_text{
+    position: absolute;
+    top:60%;
+    left: 0%;
+    width: 100%;
+    font-weight: bold;
+}
+#distance_border{
+    position: absolute;
+    margin: 0%;
+    top: 60%;
+    right: 5%;
+    width: 40%;
+    height: 15%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
+}
+#distance_text{
+    position: absolute;
+    margin: 0%;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+}
+#open_border{
+    position: absolute;
+    margin: 0%;
+    top: 80%;
+    right: 5%;
+    width: 40%;
+    height: 10%;
+    border: black solid 2px;
+    border-radius: 0px 0px 10px 10px;
+    background: repeating-linear-gradient(-45deg,var(--color), var(--color),1px, rgba(0,0,0,0.0) 0, rgba(0,0,0,0.0) 14px);
+}
+#open_text{
+    position: absolute;
+    margin: 0%;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+#setting{
+    font-size: 120%;
+}
+.label{
+    font-weight: bold;
+}
+#slider{
+    position: absolute;
+    margin: 0%;
+    top: 5%;
+    left: 5%;
+
+}
+#inclose{
+    position: absolute;
+    margin: 0%;
+    top: 25%;
+    left: 5%;
+}
+#type{
+    position: absolute;
+    margin: 0%;
+    top: 40%;
+    left: 5%;
+    width: 50%;
+    height: 50%;
+
+    border: solid 2px;
+    border-radius: 0px 10px 0px 10px;
+}
+
+#title_frame{
+    top:5%;
+    left:5%;
+    width: 90%;
+    height:90%;
+}
+#title_name{
+    font-family: "Nico Moji";
+    font-size: 200%;
+    position:absolute;
+    top:10%;
+    bottom:20%;
+    width:100%;
+    font-family:"Nico Moji";
+    font-size: 45px;
+    text-align:center;
+}
+
+.btn{
+    position: fixed;
+    background-color:  #ffd803;
+    border-radius: 10px;
+    border-width: 0px 0px 5px 5px;
+    border-color:  #d8b800;
+    font-family: "Nico Moji";
+}
+#start_btn{
+    top: 70%;
+    left: 20%;
+    height: 10%;
+    width: 60%;
+    font-size: 200%
+}
+#next_btn{
+    bottom: 5%;
+    right: 5%;
+    width: 45%;
+    height: 7.5%;
+    font-size: 200%
+}
