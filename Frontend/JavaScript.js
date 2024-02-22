@@ -21,6 +21,10 @@ const URL = "https://httpbin.org/post";
 const Search_URL = "https://maps.google.co.jp/maps?q="
 
 //HTML要素
+const Display_Frame = {
+    Title:document.getElementById("title_disp"),
+    Main:document.getElementById("main_disp"),
+}
 const Main_Frame = {
     Info:document.getElementById("info"),
     Set:document.getElementById("setting"),
