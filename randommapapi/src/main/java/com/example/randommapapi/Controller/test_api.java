@@ -57,10 +57,10 @@ public class test_api {
                 JSONArray elements = firstRow.getJSONArray("elements");
                 JSONObject firstElement = elements.getJSONObject(0);
                 JSONObject distance = firstElement.getJSONObject("distance");
-                String distanceText = distance.getString("text");
+                int distanceValue = distance.getInt("value");
  
  
-                places.add(new PlaceInfo(name, rating, isOpen, distanceText));
+                places.add(new PlaceInfo(name, rating, isOpen, distanceValue));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -70,7 +70,7 @@ public class test_api {
                 placeJson.put("name", place.name);
                 placeJson.put("rating", place.rating);
                 placeJson.put("open_now", place.isOpen);
-                placeJson.put("distance",place.distanceText);
+                placeJson.put("distance",place.distanceValue);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -85,13 +85,13 @@ public class test_api {
         public String name;
         public double rating;
         public boolean isOpen;
-        public String distanceText;
+        public int distanceValue;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, String distance) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
-            this.distanceText = distance;
+            this.distanceValue = distanceValue;
         }
     }
 }
