@@ -21,12 +21,11 @@
         <div id="main_disp">
           <div id="main_frame" class="frame">
               <!--メイン画面-->
-              <div id="info">
+              <div id="info" style="display: none;">
                 <h2 class="info_text">おすすめの店があるねん!!</h2>
                 <p class="info_text" id="name_text">店舗名</p>
                 <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="photo_img" >
                 <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" class="info_text" id="search_link">GoogleMapで開く</a>
-
                 <fieldset id="rating_border">
                   <legend class="info_text">レビュー評価</legend>
                   <div style="--percent:70%" id="rating_star"></div>
@@ -41,36 +40,28 @@
                   <p id="open_text" class="info_text">営業中</p>
                 </fieldset>
               </div>
-              <div id="setting" style="display: none;">
+              <div id="setting">
                   <!--ここに設定画面-->
-
-                  <div>
-                      <label for="slider_ran">検索範囲：</label><br>
-                      <input type="range" id="slider_ran" min="100" max="2000" step="100" value="500">
-                      <label for="slider_ran" id="ran_text">:500m</label><br><br>
-                      <input type="checkbox" id="check_icl"/>
-                      <label for="check_icl">営業時間外も含む</label>
-                  </div>
-                  <br>
-                  <fieldset>
-                      <legend>検索ジャンル</legend>
-                      <div>
-                        <input type="checkbox" id="check_res" name="interest" value="restaurant" checked/>
-                        <label for="check_res">飲食店</label>
-                      </div>
-                      <div>
-                        <input type="checkbox" id="check_par" name="interest" value="park" checked/>
-                        <label for="check_par">施設</label>
-                      </div>
-                      <div>
-                        <input type="checkbox" id="check_ent" name="interest" value="entertainment" checked/>
-                        <label for="check_ent">娯楽</label>
-                      </div>
-                      <div>
-                        <input type="checkbox" id="check_sto" name="interest" value="store" checked/>
-                        <label for="check_sto">売店</label>
-                      </div>
-                    </fieldset>
+                <div id="slider">
+                  <label for="slider_ran" class="label">検索範囲：</label><br>
+                  <input type="range" id="slider_ran" min="100" max="2000" step="100" value="500">
+                  <label for="slider_ran" id="ran_text">:500m</label>
+                </div>
+                <div id="inclose">
+                  <input type="checkbox" id="check_icl"/>
+                  <label for="check_icl">営業時間外も含む</label>
+                </div>
+                <fieldset id="type">
+                    <legend class="label">検索ジャンル</legend>
+                      <input type="checkbox" id="check_res" name="interest" value="restaurant" checked/>
+                      <label for="check_res">飲食店</label><br>
+                      <input type="checkbox" id="check_par" name="interest" value="park" checked/>
+                      <label for="check_par">施設</label><br>
+                      <input type="checkbox" id="check_ent" name="interest" value="entertainment" checked/>
+                      <label for="check_ent">娯楽</label><br>
+                      <input type="checkbox" id="check_sto" name="interest" value="store" checked/>
+                      <label for="check_sto">売店</label><br>
+                  </fieldset>
               </div>
               <div id="load" style="display: none;">
 

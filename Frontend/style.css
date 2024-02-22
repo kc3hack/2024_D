@@ -157,24 +157,35 @@ body{
     text-align: center;
     font-weight: bold;
 }
-.open_now{
-    position:absolute;
-    background-color:#00ff1a;
-    font-size: 100%;
-    top:86%;
-    left:28%;
-    padding:1px;
-    border:solid 2px rgb(0, 0, 0);
+#setting{
+    font-size: 120%;
 }
+.label{
+    font-weight: bold;
+}
+#slider{
+    position: absolute;
+    margin: 0%;
+    top: 5%;
+    left: 5%;
 
-.close_now{
-    position:absolute;
-    background-color:#ff0000;
-    font-size: 100%;
-    top:86%;
-    left:28%;
-    padding:1px;
-    border:solid 2px rgb(0, 0, 0);
+}
+#inclose{
+    position: absolute;
+    margin: 0%;
+    top: 25%;
+    left: 5%;
+}
+#type{
+    position: absolute;
+    margin: 0%;
+    top: 40%;
+    left: 5%;
+    width: 50%;
+    height: 50%;
+
+    border: solid 2px;
+    border-radius: 0px 10px 0px 10px;
 }
 
 #title_frame{
@@ -183,7 +194,6 @@ body{
     width: 90%;
     height:90%;
 }
-
 #title_name{
     font-family: "Nico Moji";
     font-size: 200%;
@@ -204,7 +214,6 @@ body{
     border-color:  #d8b800;
     font-family: "Nico Moji";
 }
-
 #start_btn{
     top: 70%;
     left: 20%;
