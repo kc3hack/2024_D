@@ -142,18 +142,6 @@ h2{
     top:0%;
 }
 
-#title_disp{
-    background-color:#fc0
-        
-}
-
-#title_name{
-    position:absolute;
-    font-family: "Nico Moji";
-    font-size:100%;
-    width:100%;
-}
-
 #title_frame{
     top:5%;
     left:5%;
@@ -170,37 +158,13 @@ h2{
     top:10%;
 }
 
-a.btn--red.btn--cubic {
-    position:absolute;
-    bottom:20%;
-    border-bottom: 5px solid #9f000c;
-  }
-  
-  a.btn--red.btn--cubic:hover {
-    position:absolute;
-    bottom:20%;
-    margin-top: 3px;
-    border-bottom: 2px solid #9f000c;
-  }
-  
-  a.btn--radius {
-    position:absolute;
-    bottom:20%;
-    border-radius: 100vh;
-  }
-  
-  .fa-position-right {
-    position: absolute;
-    bottom:20%;
-    top: calc(50% - .5em);
-    right: 1rem;
-  }
+.start_btn{
+    position: fixed;
+    top: 70%;
+    left: 20%;
+    height: 10%;
+    width: 60%;
 
-
-  a.btn--red {
-    position:absolute;
-    bottom:20%;
-    color: #000;
     background-color: #da0707;
     border-bottom: 5px solid #da0707;
   }
