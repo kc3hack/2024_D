@@ -120,10 +120,10 @@ body{
 #distance_border{
     position: absolute;
     margin: 0%;
-    top: 60%;
+    top: 62.5%;
     right: 5%;
     width: 40%;
-    height: 15%;
+    height: 12.5%;
     border: black solid 2px;
     border-radius: 0px 0px 10px 10px;
 }
@@ -140,10 +140,10 @@ body{
 #open_border{
     position: absolute;
     margin: 0%;
-    top: 80%;
+    top: 82.5%;
     right: 5%;
     width: 40%;
-    height: 10%;
+    height: 7.5%;
     border: black solid 2px;
     border-radius: 0px 0px 10px 10px;
     background: repeating-linear-gradient(-45deg,var(--color), var(--color),1px, rgba(0,0,0,0.0) 0, rgba(0,0,0,0.0) 14px);
