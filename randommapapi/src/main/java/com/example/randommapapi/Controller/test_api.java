@@ -47,7 +47,20 @@ public class test_api {
                 String name = place.getString("name");
                 double rating = place.has("rating") ? place.getDouble("rating") : -1;
                 boolean isOpen = place.has("opening_hours") ? place.getJSONObject("opening_hours").getBoolean("open_now") : false;
-                places.add(new PlaceInfo(name, rating, isOpen));
+                String id = place.has("place_id") ? place.getString("place_id") : "error";
+
+                String url2 = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:%s&origins=%s,%s&mode=walking&key=%s",id,latitude,longitude,apiKey);
+                String response2 = restTemplate.getForObject(url2, String.class);
+                JSONObject rode = new JSONObject(response2);
+                JSONArray rows = rode.getJSONArray("rows");
+                JSONObject firstRow = rows.getJSONObject(0);
+                JSONArray elements = firstRow.getJSONArray("elements");
+                JSONObject firstElement = elements.getJSONObject(0);
+                JSONObject distance = firstElement.getJSONObject("distance");
+                String distanceText = distance.getString("text");
+ 
+ 
+                places.add(new PlaceInfo(name, rating, isOpen, distanceText));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -57,6 +70,7 @@ public class test_api {
                 placeJson.put("name", place.name);
                 placeJson.put("rating", place.rating);
                 placeJson.put("open_now", place.isOpen);
+                placeJson.put("distance",place.distanceText);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -71,11 +85,13 @@ public class test_api {
         public String name;
         public double rating;
         public boolean isOpen;
+        public String distanceText;
 
-        public PlaceInfo(String name, double rating, boolean isOpen) {
+        public PlaceInfo(String name, double rating, boolean isOpen, String distance) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
+            this.distanceText = distance;
         }
     }
 }
