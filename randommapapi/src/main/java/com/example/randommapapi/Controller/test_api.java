@@ -8,6 +8,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.randommapapi.randommapapi;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +32,7 @@ public class test_api {
 	}
     @CrossOrigin(origins = "*")
     @PostMapping("/getRestaurantInfo")
-    public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
+    public String getRestaurantInfo(@RequestBody Map<String, Object> payload) throws IOException, URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
         String apiKey = System.getenv("API");
         String latitude =payload.get("latitude").toString();
@@ -59,8 +63,11 @@ public class test_api {
                 JSONObject distance = firstElement.getJSONObject("distance");
                 int distanceValue = distance.getInt("value");
  
- 
-                places.add(new PlaceInfo(name, rating, isOpen, distanceValue));
+                String photoReference = place.getJSONArray("photos").getJSONObject(0).getString("photo_reference");
+                String photoUrl = getPhotoUrl(photoReference, apiKey);
+
+
+                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -71,6 +78,7 @@ public class test_api {
                 placeJson.put("rating", place.rating);
                 placeJson.put("open_now", place.isOpen);
                 placeJson.put("distance",place.distanceValue);
+                placeJson.put("URL",place.photoURL);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -81,17 +89,42 @@ public class test_api {
         }
     }
 
+    public String getPhotoUrl(String photoReference, String apiKey) throws URISyntaxException, IOException {
+        int maxwidth = 400;  // 画像の最大幅を指定してください
+
+        String urlString = "https://maps.googleapis.com/maps/api/place/photo" +
+                "?maxwidth=" + maxwidth +
+                "&photoreference=" + photoReference +
+                "&key=" + apiKey;
+
+        URI uri = new URI(urlString);
+        HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
+        connection.setRequestMethod("GET");
+        connection.connect();
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            return connection.getURL().toString();
+        } else {
+            System.out.println("GET request not worked");
+            return null;
+        }
+    }
+
+    
     static class PlaceInfo {
         public String name;
         public double rating;
         public boolean isOpen;
         public int distanceValue;
+        public String photoURL;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
             this.distanceValue = distanceValue;
+            this.photoURL = photoUrl;
         }
     }
 }
