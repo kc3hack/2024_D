@@ -64,6 +64,8 @@ let tmep_json;      //設定の変更を監視する用
 
 async function GetInfo(){
 
+    if(NowLoad == true){return;}    //複数読み込みの予防
+
     GetType();           //現在の設定を取得
     const json = {          //JSONの作成
         latitude:35,
