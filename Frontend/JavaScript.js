@@ -105,6 +105,8 @@ async function GetInfo(){
             console.error("Error:", e);
         }
 
+        if(list.length == 0){alert("アカンは、ここ田舎や"); return;}
+
         /*店舗一覧を表示*/
         DispList();
 
