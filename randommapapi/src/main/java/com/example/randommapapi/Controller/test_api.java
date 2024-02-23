@@ -78,7 +78,7 @@ public class test_api {
                 placeJson.put("rating", place.rating);
                 placeJson.put("open_now", place.isOpen);
                 placeJson.put("distance",place.distanceValue);
-                placeJson.put("URL",place.photoURL);
+                placeJson.put("photo",place.photoURL);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
