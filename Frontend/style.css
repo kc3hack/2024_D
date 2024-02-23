@@ -56,7 +56,7 @@ body{
     right: 0%;
     margin: 0%;
 }
-#name_text{
+#name_div{
     position: absolute;
     top:15%;
     left: 0%;
@@ -67,6 +67,7 @@ body{
     background-color: #ffd803;
     border-radius: 10px 10px 0px 0px;
     color: black;
+    overflow: hidden;
 }
 #photo_img{
     position:absolute;
