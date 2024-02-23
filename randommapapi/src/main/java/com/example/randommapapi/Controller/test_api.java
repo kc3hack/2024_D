@@ -67,7 +67,7 @@ public class test_api {
                 String photoUrl = getPhotoUrl(photoReference, apiKey);
 
 
-                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl, id));
+                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -79,7 +79,6 @@ public class test_api {
                 placeJson.put("open_now", place.isOpen);
                 placeJson.put("distance",place.distanceValue);
                 placeJson.put("photo",place.photoURL);
-                placeJson.put("id", place.id); // Fix: Changed placeArray.put("id",place.id); to placeJson.put("id", place.id);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -119,15 +118,13 @@ public class test_api {
         public boolean isOpen;
         public int distanceValue;
         public String photoURL;
-        public String id;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl, String id) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
             this.distanceValue = distanceValue;
             this.photoURL = photoUrl;
-            this.id = id;
         }
     }
 }
