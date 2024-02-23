@@ -34,7 +34,7 @@ public class test_api {
     @PostMapping("/getRestaurantInfo")
     public String getRestaurantInfo(@RequestBody Map<String, Object> payload) throws IOException, URISyntaxException {
         RestTemplate restTemplate = new RestTemplate();
-        String apiKey = System.getenv("API");
+        String apiKey = "AIzaSyDGY69a-jXU4KvfJ__lY1K9z9FvZ3GRCLw";//System.getenv("API");
         String latitude =payload.get("latitude").toString();
         String longitude =payload.get("longitude").toString();
         int range = Integer.parseInt(payload.get("range").toString());
@@ -67,7 +67,7 @@ public class test_api {
                 String photoUrl = getPhotoUrl(photoReference, apiKey);
 
 
-                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl));
+                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl, id));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -79,6 +79,7 @@ public class test_api {
                 placeJson.put("open_now", place.isOpen);
                 placeJson.put("distance",place.distanceValue);
                 placeJson.put("photo",place.photoURL);
+                placeJson.put("id", place.id); // Fix: Changed placeArray.put("id",place.id); to placeJson.put("id", place.id);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -118,13 +119,15 @@ public class test_api {
         public boolean isOpen;
         public int distanceValue;
         public String photoURL;
+        public String id;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl, String id) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
             this.distanceValue = distanceValue;
             this.photoURL = photoUrl;
+            this.id = id;
         }
     }
 }
