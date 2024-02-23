@@ -40,6 +40,7 @@ const Info = {
     OPEN_B:document.getElementById("open_border"),
 }
 const List_Frame = document.getElementById("list");
+const Help_Img = document.getElementById("help_img");
 const Setting = {
     RAN_S:document.getElementById("slider_ran"),
     RAN_T:document.getElementById("ran_text"),
@@ -60,7 +61,7 @@ let Type = {
     STO:{Name:"store", Value:true},
 }
 
-const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、、、、、、、、、、、"
+const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、あかんヤバイわ、ど忘れしてもうた、、、待ってや、すぐ思い出すからな、もうここまで出てきてんねん、、、、"
 let NowLoad = false;
 
 //送受信データ
@@ -92,17 +93,12 @@ const test_json = {
 }
 
 async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
-    /*ロード画面の表示*/
-    Display("Load");
-    NowLoad = true;
-    Load();
 
     /*送信JSONを作る*/
     GetSetting();//設定の更新
-    const posi = await GetPosi();
     const json = {
-        latitude:posi.coords.latitude,
-        longitude:posi.coords.longitude,
+        latitude:35,
+        longitude:135,
         range:Range,
         inclose:InClouse,
         type:[],
@@ -113,6 +109,15 @@ async function GetInfo(){//Button{別のおばちゃんを呼ぶ}
 
     /*バックエンドと送受信*/
     if(ChangeJson(json) || list.length == 0){//検索条件の変更or全閲覧
+        /*ロード画面の表示*/
+        Display("Load");
+        NowLoad = true;
+        Load();
+
+        const posi = await GetPosi();
+        json.latitude = posi.coords.latitude;
+        json.longitude = posi.coords.longitude;
+
         try{
             tmep_json = json;//送信Jsonの保存
             const res = await fetch(URL, {
@@ -174,7 +179,7 @@ const DispInfo = ()=>{//情報をInfoフレームに表示する
 
 function Display(Name){
     //画面の切り替え
-    //console.log(Main_Frame["Info"]);
+    if(Name == "Setting"){temp_info.push("ダミー配列");}//履歴表示用のダミー
     for(let i of Object.keys(Main_Frame)){
         if(i == Name){
             Main_Frame[i].style.display = "";
@@ -193,8 +198,12 @@ function Load(){
         if(!NowLoad){
             clearInterval(loop);
         }
-    }, 75);
-    
+    }, 75); 
+}
+
+function Help(show){
+    Help_Img.style.display = (show)? "":"none";
+    return "OK";
 }
 
 function GetSetting(){
@@ -214,10 +223,12 @@ function Start_Btn(){
 Setting.RAN_S.addEventListener('input', (e)=>{
     Setting.RAN_T.innerText = `:${Setting.RAN_S.value}m`;
 });
+
 window.addEventListener('popstate', (e)=>{
     if(temp_info.length > 1){
         temp_info.pop();
         DispInfo();
+        Display("Info");
     }else{
         alert("そんな昔のこと覚えてへんわ");
     }

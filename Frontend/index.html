@@ -22,18 +22,19 @@
           <div id="main_frame" class="frame">
               <!--メイン画面-->
               <div id="info">
+                <p id="info_help" onclick="Help(true)">help</p>
                 <h2 class="info_text">おすすめの店があるねん!!</h2>
                 <p class="info_text" id="name_text">店舗名</p>
-                <img src="https://canaeru.usen.com/image/1/1044/K1044_main.jpg" alt="画像" class="photo_img" >
+                <img src="img/No.png" alt="画像" class="photo_img" >
                 <a href="https://maps.google.co.jp/maps?q=東京タワー" target="_blank" class="info_text" id="search_link">GoogleMapで開く</a>
                 <fieldset id="rating_border">
                   <legend class="info_text">レビュー評価</legend>
-                  <div style="--percent:70%" id="rating_star"></div>
-                  <p class="info_text" id="rating_text">4.7</p>
+                  <div style="--percent:100%" id="rating_star"></div>
+                  <p class="info_text" id="rating_text">5.0</p>
                 </fieldset>
                 <fieldset id="distance_border">
                   <legend class="info_text">ここからの距離</legend>
-                  <p id="distance_text">280m</p>
+                  <p id="distance_text">---m</p>
                 </fieldset>
                 <fieldset id="open_border" style="--color:#00ff1a;">
                   <legend class="info_text">現在の状態</legend>
@@ -76,6 +77,7 @@
           <input type="button" value="ほかのヒト" class="btn" id="next_btn" onclick="GetInfo()">
           <!--CSSでいい感じのボタンに-->
         </div>
+        <img src="img/help.png" id="help_img" onclick="Help(false)" style="display: none;">
         <script src="JavaScript.js" defer></script>
     </body>
 </html>

@@ -43,12 +43,21 @@ body{
 }
 
 #load{
+    position: absolute;
+    left: 5%;
+    width: 90%;
     font-size: 150%;
     font-weight: bold;
 }
 
 .info_text{
     text-align: center;
+    margin: 0%;
+}
+#info_help{
+    position: absolute;
+    top: 0%;
+    right: 0%;
     margin: 0%;
 }
 #name_text{
@@ -66,10 +75,11 @@ body{
 .photo_img{
     position:absolute;
     margin: 0%;
-    top:35%;
+    top:40%;
     left: 5%;
-    width: 40%;
-    height: 36vw;
+    width: 37.5%;
+    height: 33.75vw;
+    border: solid 2px;
 }
 #search_link{
     position:absolute;
@@ -82,7 +92,7 @@ body{
     margin: 0%;
     top: 35%;
     right: 5%;
-    width: 40%;
+    width: 37.5%;
     height: 20%;
     border: black solid 2px;
     border-radius: 0px 0px 10px 10px;
@@ -122,7 +132,7 @@ body{
     margin: 0%;
     top: 62.5%;
     right: 5%;
-    width: 40%;
+    width: 37.5%;
     height: 12.5%;
     border: black solid 2px;
     border-radius: 0px 0px 10px 10px;
@@ -142,7 +152,7 @@ body{
     margin: 0%;
     top: 82.5%;
     right: 5%;
-    width: 40%;
+    width: 37.5%;
     height: 7.5%;
     border: black solid 2px;
     border-radius: 0px 0px 10px 10px;
@@ -227,4 +237,11 @@ body{
     width: 45%;
     height: 7.5%;
     font-size: 200%
+}
+#help_img{
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: auto;
 }
