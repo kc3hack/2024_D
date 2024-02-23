@@ -39,7 +39,7 @@ public class test_api {
         String longitude =payload.get("longitude").toString();
         int range = Integer.parseInt(payload.get("range").toString());
         String type = payload.get("type").toString();
-        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&keyword=%s&key=%s", latitude, longitude, range, type, apiKey);
+        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&keyword=%s&key=%s&language=ja", latitude, longitude, range, type, apiKey);
         
 
         String response = restTemplate.getForObject(url, String.class);
