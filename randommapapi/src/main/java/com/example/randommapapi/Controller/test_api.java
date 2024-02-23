@@ -39,7 +39,8 @@ public class test_api {
         String longitude =payload.get("longitude").toString();
         int range = Integer.parseInt(payload.get("range").toString());
         String type = payload.get("type").toString();
-        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&types=%s&key=%s", latitude, longitude, range, type, apiKey);
+        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&keyword=%s&key=%s", latitude, longitude, range, type, apiKey);
+        
 
         String response = restTemplate.getForObject(url, String.class);
         List<PlaceInfo> places = new ArrayList<>();
@@ -67,7 +68,7 @@ public class test_api {
                 String photoUrl = getPhotoUrl(photoReference, apiKey);
 
 
-                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl));
+                places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl, id));
             }
             // JSON形式で出力
             JSONObject outputJson =  new JSONObject();
@@ -79,6 +80,7 @@ public class test_api {
                 placeJson.put("open_now", place.isOpen);
                 placeJson.put("distance",place.distanceValue);
                 placeJson.put("photo",place.photoURL);
+                placeJson.put("id", place.id);
                 placeArray.put(placeJson);
             }
             outputJson.put("places", placeArray);
@@ -118,13 +120,15 @@ public class test_api {
         public boolean isOpen;
         public int distanceValue;
         public String photoURL;
+        public String id;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl ,String id) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
             this.distanceValue = distanceValue;
             this.photoURL = photoUrl;
+            this.id = id;
         }
     }
 }
