@@ -53,7 +53,7 @@ let Type = {
     STO:{Name:"store", Value:true},
 }
 
-const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、あかんヤバイわ、ど忘れしてもうた、、、待ってや、すぐ思い出すからな、もうここまで出てきてんねん、、、、"
+const load_text = "そうそう、このまえ聞いた話なんやけどな、なんやったっけ、すぐ思い出すんやけど、、、そやそや山田さんがさ、ちょいまって違うわ、あれやねんあれ、待ってな、もうここまで出てんねんけどさ、、、あかんヤバイわ、ど忘れしてもうた、、、待ってや、すぐ思い出すからな、もうここまで出てきてんねん、、、、違うねん、知ってるんやで、知ってんねんけどな、ホンマに思い出せへんわ、、、アカンわ、もう年かもしれん、、、あーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー"
 let NowLoad = false;
 
 //受信データの処理
@@ -174,8 +174,8 @@ const DispInfo = (Order)=>{     //メインInfoに表示する  引数(表示す
     const info = list[Order];
     Info.NAME_T.innerText = info.name;
     Info.PHOT_I.src = info.photo;
-    Info.SACH_L.href = `${Search_URL_Id}${info.id}`;
-    // Info.SACH_L.href = `${Search_URL_Name}${info.name}`;
+    // Info.SACH_L.href = `${Search_URL_Id}${info.id}`;
+    Info.SACH_L.href = `${Search_URL_Name}${info.name}`;
     Info.STAR_T.innerText = info.rating;
     Info.STAR_S.style.setProperty('--percent', `${20 * info.rating}%`);
     Info.DIST_T.innerText = `${info.distance}m`;
