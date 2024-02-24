@@ -46,6 +46,17 @@ body{
     font-weight: bold;
 }
 
+#main_help{
+    position: fixed;
+    top: 0%;
+    right: 5%;
+
+    background-color: #f7f6dc;
+    border: solid 2px;
+    border-color: black;
+    border-radius: 10px;
+}
+
 .info_text{
     text-align: center;
     margin: 0%;
