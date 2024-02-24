@@ -62,7 +62,7 @@
   - JavaScript
   
 - Backend
-  - Java 21
+  - Java 21.0.2
   - SpringBoot 3.2.2
 - その他
 
