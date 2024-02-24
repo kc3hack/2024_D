@@ -93,8 +93,6 @@ async function GetInfo(){
         try{
             tmep_json = json;//送信Jsonの保存
             /*フェッチ*/
-            const controller = new AbortController()
-            await setTimeout(() => controller.abort(), 20000)
             const res = await fetch(URL, {
                 method: "POST",
                 signal: controller.signal,
@@ -104,7 +102,6 @@ async function GetInfo(){
                 body:JSON.stringify(json)
             });
             const res_json = await res.json();
-            await new Promise(p => setTimeout(p, 3000))
             list = res_json.places;
             console.log("Get JsonDate successful");
         }catch(e){
