@@ -107,6 +107,11 @@ async function GetInfo(){
             console.log("Get JsonDate successful");
         }catch(e){
             console.error("Error:", e);
+            alert("あかんわ、なんも思い出せへんわ");
+            tmep_json = undefined;
+            NowLoad = false;
+            Display("Info");
+            return;
         }
 
         if(list.length == 0){alert("アカンは、ここ田舎や"); return;}
