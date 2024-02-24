@@ -19,89 +19,92 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 public class test_api {
 
-
     public static void main(String[] args) {
-		SpringApplication.run(randommapapi.class, args);
-		//resources/application.propertiesを触ってportを8081にしてます　理由は、私のローカル環境のせいです　なにかあれば変更してください
-	}
+        SpringApplication.run(randommapapi.class, args);
+        // resources/application.propertiesを触ってportを8081にしてます　理由は、私のローカル環境のせいです　なにかあれば変更してください
+    }
+
     @CrossOrigin(origins = "*")
     @PostMapping("/getRestaurantInfo")
-    public String getRestaurantInfo(@RequestBody Map<String, Object> payload) throws IOException, URISyntaxException {
-        RestTemplate restTemplate = new RestTemplate();
-        String apiKey =System.getenv("API");
-        String latitude =payload.get("latitude").toString();
-        String longitude =payload.get("longitude").toString();
-        int range = Integer.parseInt(payload.get("range").toString());
-        String type = payload.get("type").toString();
-        boolean inclose = Boolean.parseBoolean(payload.get("inclose").toString());
-        String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&keyword=%s&key=%s&language=ja", latitude, longitude, range, type, apiKey);
-        
-
-        String response = restTemplate.getForObject(url, String.class);
-        List<PlaceInfo> places = new ArrayList<>();
+    public String getRestaurantInfo(@RequestBody Map<String, Object> payload) {
         try {
-            JSONObject jsonObject = new JSONObject(response);
-            JSONArray results = jsonObject.getJSONArray("results");
-            for (int i = 0; i < results.length(); i++) {
-                JSONObject place = results.getJSONObject(i);
-                String name = place.getString("name");
-                double rating = place.has("rating") ? place.getDouble("rating") : -1;
-                boolean isOpen = place.has("opening_hours") ? place.getJSONObject("opening_hours").getBoolean("open_now") : false;
-                String id = place.has("place_id") ? place.getString("place_id") : "error";
+            RestTemplate restTemplate = new RestTemplate();
+            String apiKey = System.getenv("API");
+            String latitude = payload.get("latitude").toString();
+            String longitude = payload.get("longitude").toString();
+            int range = Integer.parseInt(payload.get("range").toString());
 
-                String url2 = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:%s&origins=%s,%s&mode=walking&key=%s",id,latitude,longitude,apiKey);
-                String response2 = restTemplate.getForObject(url2, String.class);
-                JSONObject rode = new JSONObject(response2);
-                JSONArray rows = rode.getJSONArray("rows");
-                JSONObject firstRow = rows.getJSONObject(0);
-                JSONArray elements = firstRow.getJSONArray("elements");
-                JSONObject firstElement = elements.getJSONObject(0);
-                JSONObject distance = firstElement.getJSONObject("distance");
-                int distanceValue = distance.getInt("value");
- 
-                String photoReference = place.getJSONArray("photos").getJSONObject(0).getString("photo_reference");
-                String photoUrl = getPhotoUrl(photoReference, apiKey);
-
-                if(inclose == true){
-                    places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl, id));
-                }else if(isOpen == true){
-                    places.add(new PlaceInfo(name, rating, isOpen, distanceValue,photoUrl, id));
-                }
-            
-                
+            List<String> keywordList = new ArrayList<>();
+            try {
+                List<String> types = (List<String>) payload.get("type");
+                keywordList.addAll(types);
+            } catch (ClassCastException e) {
+                keywordList.add("restaurant");
             }
-            // JSON形式で出力
-            JSONObject outputJson =  new JSONObject();
-            JSONArray placeArray = new JSONArray();
+            boolean inclose = Boolean.parseBoolean(payload.get("inclose").toString());
+            List<PlaceInfo> places = new ArrayList<>();
+            for (String keyword : keywordList) {
+                String url = String.format("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s,%s&radius=%s&type=%s&key=%s&language=ja", latitude, longitude, range, keyword, apiKey);
+                String response = restTemplate.getForObject(url, String.class);
+                JSONObject jsonResponse = new JSONObject(response);
+                JSONArray results = jsonResponse.getJSONArray("results");
+                for (int i = 0; i < results.length(); i++) {
+                    JSONObject place = results.getJSONObject(i);
+                    String name = place.getString("name");
+                    double rating = place.optDouble("rating", -1);
+                    boolean isOpen = false;
+                    JSONObject openingHoursObject = place.optJSONObject("opening_hours");
+                    if (openingHoursObject != null) {
+                        isOpen = openingHoursObject.optBoolean("open_now", false);
+                    }
+                    String id = place.optString("place_id", "error");
+            
+                    JSONArray photosArray = place.optJSONArray("photos");
+                    if (photosArray != null && photosArray.length() > 0) {
+                        String photoReference = photosArray.getJSONObject(0).getString("photo_reference");
+                        String photoUrl = getPhotoUrl(photoReference, apiKey);
+            
+                        String url2 = String.format("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=place_id:%s&origins=%s,%s&mode=walking&key=%s", id, latitude, longitude, apiKey);
+                        String response2 = restTemplate.getForObject(url2, String.class);
+                        JSONObject road = new JSONObject(response2);
+                        int distanceValue = road.getJSONArray("rows").getJSONObject(0).getJSONArray("elements").getJSONObject(0).getJSONObject("distance").getInt("value");
+            
+                        if (inclose || isOpen) {
+                            places.add(new PlaceInfo(name, rating, isOpen, distanceValue, photoUrl, id));
+                        }
+                    }
+                }
+            }
+                        JSONArray placeArray = new JSONArray();
             for (PlaceInfo place : places) {
                 JSONObject placeJson = new JSONObject();
                 placeJson.put("name", place.name);
                 placeJson.put("rating", place.rating);
                 placeJson.put("open_now", place.isOpen);
-                placeJson.put("distance",place.distanceValue);
-                placeJson.put("photo",place.photoURL);
+                placeJson.put("distance", place.distanceValue);
+                placeJson.put("photo", place.photoURL);
                 placeJson.put("id", place.id);
                 placeArray.put(placeJson);
             }
+            JSONObject outputJson = new JSONObject();
             outputJson.put("places", placeArray);
             return outputJson.toString();
-        } catch (JSONException e) {
+        } catch (JSONException | IOException | URISyntaxException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public String getPhotoUrl(String photoReference, String apiKey) throws URISyntaxException, IOException {
-        int maxwidth = 400;  // 画像の最大幅を指定してください
+    private String getPhotoUrl(String photoReference, String apiKey) throws URISyntaxException, IOException {
+        int maxWidth = 400;  // 画像の最大幅を指定してください
 
         String urlString = "https://maps.googleapis.com/maps/api/place/photo" +
-                "?maxwidth=" + maxwidth +
+                "?maxwidth=" + maxWidth +
                 "&photoreference=" + photoReference +
                 "&key=" + apiKey;
 
@@ -119,7 +122,6 @@ public class test_api {
         }
     }
 
-    
     static class PlaceInfo {
         public String name;
         public double rating;
@@ -128,7 +130,7 @@ public class test_api {
         public String photoURL;
         public String id;
 
-        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl ,String id) {
+        public PlaceInfo(String name, double rating, boolean isOpen, int distanceValue, String photoUrl, String id) {
             this.name = name;
             this.rating = rating;
             this.isOpen = isOpen;
