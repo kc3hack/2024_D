@@ -63,7 +63,7 @@
   
 - Backend
   - Java 21
-  - SpringBoot ○○○
+  - SpringBoot 3.2.2
 - その他
 
 
