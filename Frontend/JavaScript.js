@@ -5,7 +5,7 @@
 */
 
 //フェッチURL
-const URL = "https://httpbin.org/post";
+let URL = "https://httpbin.org/post";
 
 //GoogleMap検索のURL
 const Search_URL_Id = "https://www.google.com/maps/place/?q=place_id:"
@@ -102,6 +102,7 @@ async function GetInfo(){
             });
             const res_json = await res.json();
             list = res_json.places;
+            console.log(list);
             console.log("Get JsonDate successful");
         }catch(e){
             console.error("Error:", e);
@@ -112,7 +113,12 @@ async function GetInfo(){
             return;
         }
 
-        if(list.length == 0){alert("アカンは、ここ田舎や"); return;}
+        if(list.length == 0){
+            alert("アカンは、ここ田舎や");
+            NowLoad = false;
+            Display("Info");
+            return;
+        }
 
         /*店舗一覧を表示*/
         DispList();
