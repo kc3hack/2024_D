@@ -25,7 +25,7 @@
 
 
 ## 操作説明・デモ動画
-[使い方動画].(https://drive.google.com/file/d/1Xq1zaK_DMim4_aQpUrnCB21xdYYQcgTY/preview)
+[使い方動画](https://drive.google.com/file/d/1Xq1zaK_DMim4_aQpUrnCB21xdYYQcgTY/preview)
 <!--[デモ動画はこちら](https://www.youtube.com/watch?v=_FAA15ARmas)-->
 <!-- 開発したプロダクトの操作説明について入力してください。また、操作説明デモ動画があれば、埋め込みやリンクを記載してください -->
 
