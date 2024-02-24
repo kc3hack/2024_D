@@ -95,7 +95,6 @@ async function GetInfo(){
             /*フェッチ*/
             const res = await fetch(URL, {
                 method: "POST",
-                signal: controller.signal,
                 headers:{
                     "Content-Type":"application/json",
                 },
