@@ -101,11 +101,11 @@ async function GetInfo(){
                 headers:{
                     "Content-Type":"application/json",
                 },
-                body:JSON.stringify(json_test)
+                body:JSON.stringify(json)
             });
             const res_json = await res.json();
             await new Promise(p => setTimeout(p, 3000))
-            list = res_json.json.places;
+            list = res_json.places;
             console.log("Get JsonDate successful");
         }catch(e){
             console.error("Error:", e);
@@ -118,6 +118,7 @@ async function GetInfo(){
 
         if(list.length == 0){
             alert("アカンは、ここ田舎や");
+            tmep_json = undefined;
             NowLoad = false;
             Display("Info");
             return;
