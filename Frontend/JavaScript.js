@@ -5,7 +5,7 @@
 */
 
 //フェッチURL
-let URL = "https://httpbin.org/post";
+const URL = "https://httpbin.org/post";
 
 //GoogleMap検索のURL
 const Search_URL_Id = "https://www.google.com/maps/place/?q=place_id:"
